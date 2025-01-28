@@ -15,7 +15,7 @@ public class AuthRequest extends BaseRequest{
         Logs.info("(POST) Login Request");
 
         final var response = getRequest()
-            .basePath("login")
+            .basePath("auth/login")
             .body(new File(filePath))
             .request(Method.POST);
 

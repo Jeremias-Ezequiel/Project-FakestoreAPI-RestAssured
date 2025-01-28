@@ -29,8 +29,8 @@ public class RequestManager {
     public void initAuth(){
         Logs.info("Autenticandose con el request de login");
         final var authRequest = new AuthRequest();
-        authRequest.login("path.json"); // Credentials 
-        final var token = ResponseManager.getPathAsString("accessToken"); 
+        authRequest.login("src/test/resources/requestBody/login.json"); // Credentials 
+        final var token = ResponseManager.getPathAsString("token"); 
         
         new RequestProvider().get().auth().preemptive().oauth2(token); 
     }
