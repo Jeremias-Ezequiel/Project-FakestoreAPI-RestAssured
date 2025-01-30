@@ -1,0 +1,3417 @@
+{
+	"info": {
+		"_postman_id": "d2131652-4f80-450e-ae5c-a908586a9a47",
+		"name": "FakestoreAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36953447"
+	},
+	"item": [
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "AllProducts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that all products have the propertie id\", function () {\r",
+									"     let responseData = pm.response.json();\r",
+									"\r",
+									"     pm.expect(responseData).to.be.an('array');\r",
+									"     responseData.forEach((product) => {\r",
+									"            pm.expect(product).to.have.property('id');\r",
+									"     });\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/products",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "AllProducts",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/products",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:28:58 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"297c-h+n6NsR3M51S6528jZo3BluzvtU\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=RPLlZun1x%2BfZ%2F8kM2l7f5ekXLXupBCJ%2BrINTnADcFyscewTvwwg2s0d8ayGMTJs7u6XRpJGGs46fb2NtSS56x5v83gExjgdl62V%2BHyT4kyo9KikN42DyG0GERs326FeRax70\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a386596b2d874a-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=2134&min_rtt=1960&rtt_var=859&sent=3&recv=5&lost=0&retrans=0&sent_bytes=219&recv_bytes=971&delivery_rate=738775&cwnd=250&unsent_bytes=0&cid=cb4f3e7d5dede24e&ts=142&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops\",\n        \"price\": 109.95,\n        \"description\": \"Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday\",\n        \"category\": \"men's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg\",\n        \"rating\": {\n            \"rate\": 3.9,\n            \"count\": 120\n        }\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Mens Casual Premium Slim Fit T-Shirts \",\n        \"price\": 22.3,\n        \"description\": \"Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.\",\n        \"category\": \"men's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg\",\n        \"rating\": {\n            \"rate\": 4.1,\n            \"count\": 259\n        }\n    },\n    {\n        \"id\": 3,\n        \"title\": \"Mens Cotton Jacket\",\n        \"price\": 55.99,\n        \"description\": \"great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.\",\n        \"category\": \"men's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg\",\n        \"rating\": {\n            \"rate\": 4.7,\n            \"count\": 500\n        }\n    },\n    {\n        \"id\": 4,\n        \"title\": \"Mens Casual Slim Fit\",\n        \"price\": 15.99,\n        \"description\": \"The color could be slightly different between on the screen and in practice. / Please note that body builds vary by person, therefore, detailed size information should be reviewed below on the product description.\",\n        \"category\": \"men's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg\",\n        \"rating\": {\n            \"rate\": 2.1,\n            \"count\": 430\n        }\n    },\n    {\n        \"id\": 5,\n        \"title\": \"John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet\",\n        \"price\": 695,\n        \"description\": \"From our Legends Collection, the Naga was inspired by the mythical water dragon that protects the ocean's pearl. Wear facing inward to be bestowed with love and abundance, or outward for protection.\",\n        \"category\": \"jewelery\",\n        \"image\": \"https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg\",\n        \"rating\": {\n            \"rate\": 4.6,\n            \"count\": 400\n        }\n    },\n    {\n        \"id\": 6,\n        \"title\": \"Solid Gold Petite Micropave \",\n        \"price\": 168,\n        \"description\": \"Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.\",\n        \"category\": \"jewelery\",\n        \"image\": \"https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg\",\n        \"rating\": {\n            \"rate\": 3.9,\n            \"count\": 70\n        }\n    },\n    {\n        \"id\": 7,\n        \"title\": \"White Gold Plated Princess\",\n        \"price\": 9.99,\n        \"description\": \"Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine's Day...\",\n        \"category\": \"jewelery\",\n        \"image\": \"https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg\",\n        \"rating\": {\n            \"rate\": 3,\n            \"count\": 400\n        }\n    },\n    {\n        \"id\": 8,\n        \"title\": \"Pierced Owl Rose Gold Plated Stainless Steel Double\",\n        \"price\": 10.99,\n        \"description\": \"Rose Gold Plated Double Flared Tunnel Plug Earrings. Made of 316L Stainless Steel\",\n        \"category\": \"jewelery\",\n        \"image\": \"https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg\",\n        \"rating\": {\n            \"rate\": 1.9,\n            \"count\": 100\n        }\n    },\n    {\n        \"id\": 9,\n        \"title\": \"WD 2TB Elements Portable External Hard Drive - USB 3.0 \",\n        \"price\": 64,\n        \"description\": \"USB 3.0 and USB 2.0 Compatibility Fast data transfers Improve PC Performance High Capacity; Compatibility Formatted NTFS for Windows 10, Windows 8.1, Windows 7; Reformatting may be required for other operating systems; Compatibility may vary depending on user’s hardware configuration and operating system\",\n        \"category\": \"electronics\",\n        \"image\": \"https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg\",\n        \"rating\": {\n            \"rate\": 3.3,\n            \"count\": 203\n        }\n    },\n    {\n        \"id\": 10,\n        \"title\": \"SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s\",\n        \"price\": 109,\n        \"description\": \"Easy upgrade for faster boot up, shutdown, application load and response (As compared to 5400 RPM SATA 2.5” hard drive; Based on published specifications and internal benchmarking tests using PCMark vantage scores) Boosts burst write performance, making it ideal for typical PC workloads The perfect balance of performance and reliability Read/write speeds of up to 535MB/s/450MB/s (Based on internal testing; Performance may vary depending upon drive capacity, host device, OS and application.)\",\n        \"category\": \"electronics\",\n        \"image\": \"https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg\",\n        \"rating\": {\n            \"rate\": 2.9,\n            \"count\": 470\n        }\n    },\n    {\n        \"id\": 11,\n        \"title\": \"Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance Boost SATA III 2.5\",\n        \"price\": 109,\n        \"description\": \"3D NAND flash are applied to deliver high transfer speeds Remarkable transfer speeds that enable faster bootup and improved overall system performance. The advanced SLC Cache Technology allows performance boost and longer lifespan 7mm slim design suitable for Ultrabooks and Ultra-slim notebooks. Supports TRIM command, Garbage Collection technology, RAID, and ECC (Error Checking & Correction) to provide the optimized performance and enhanced reliability.\",\n        \"category\": \"electronics\",\n        \"image\": \"https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg\",\n        \"rating\": {\n            \"rate\": 4.8,\n            \"count\": 319\n        }\n    },\n    {\n        \"id\": 12,\n        \"title\": \"WD 4TB Gaming Drive Works with Playstation 4 Portable External Hard Drive\",\n        \"price\": 114,\n        \"description\": \"Expand your PS4 gaming experience, Play anywhere Fast and easy, setup Sleek design with high capacity, 3-year manufacturer's limited warranty\",\n        \"category\": \"electronics\",\n        \"image\": \"https://fakestoreapi.com/img/61mtL65D4cL._AC_SX679_.jpg\",\n        \"rating\": {\n            \"rate\": 4.8,\n            \"count\": 400\n        }\n    },\n    {\n        \"id\": 13,\n        \"title\": \"Acer SB220Q bi 21.5 inches Full HD (1920 x 1080) IPS Ultra-Thin\",\n        \"price\": 599,\n        \"description\": \"21. 5 inches Full HD (1920 x 1080) widescreen IPS display And Radeon free Sync technology. No compatibility for VESA Mount Refresh Rate: 75Hz - Using HDMI port Zero-frame design | ultra-thin | 4ms response time | IPS panel Aspect ratio - 16: 9. Color Supported - 16. 7 million colors. Brightness - 250 nit Tilt angle -5 degree to 15 degree. Horizontal viewing angle-178 degree. Vertical viewing angle-178 degree 75 hertz\",\n        \"category\": \"electronics\",\n        \"image\": \"https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg\",\n        \"rating\": {\n            \"rate\": 2.9,\n            \"count\": 250\n        }\n    },\n    {\n        \"id\": 14,\n        \"title\": \"Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) – Super Ultrawide Screen QLED \",\n        \"price\": 999.99,\n        \"description\": \"49 INCH SUPER ULTRAWIDE 32:9 CURVED GAMING MONITOR with dual 27 inch screen side by side QUANTUM DOT (QLED) TECHNOLOGY, HDR support and factory calibration provides stunningly realistic and accurate color and contrast 144HZ HIGH REFRESH RATE and 1ms ultra fast response time work to eliminate motion blur, ghosting, and reduce input lag\",\n        \"category\": \"electronics\",\n        \"image\": \"https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg\",\n        \"rating\": {\n            \"rate\": 2.2,\n            \"count\": 140\n        }\n    },\n    {\n        \"id\": 15,\n        \"title\": \"BIYLACLESEN Women's 3-in-1 Snowboard Jacket Winter Coats\",\n        \"price\": 56.99,\n        \"description\": \"Note:The Jackets is US standard size, Please choose size as your usual wear Material: 100% Polyester; Detachable Liner Fabric: Warm Fleece. Detachable Functional Liner: Skin Friendly, Lightweigt and Warm.Stand Collar Liner jacket, keep you warm in cold weather. Zippered Pockets: 2 Zippered Hand Pockets, 2 Zippered Pockets on Chest (enough to keep cards or keys)and 1 Hidden Pocket Inside.Zippered Hand Pockets and Hidden Pocket keep your things secure. Humanized Design: Adjustable and Detachable Hood and Adjustable cuff to prevent the wind and water,for a comfortable fit. 3 in 1 Detachable Design provide more convenience, you can separate the coat and inner as needed, or wear it together. It is suitable for different season and help you adapt to different climates\",\n        \"category\": \"women's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg\",\n        \"rating\": {\n            \"rate\": 2.6,\n            \"count\": 235\n        }\n    },\n    {\n        \"id\": 16,\n        \"title\": \"Lock and Love Women's Removable Hooded Faux Leather Moto Biker Jacket\",\n        \"price\": 29.95,\n        \"description\": \"100% POLYURETHANE(shell) 100% POLYESTER(lining) 75% POLYESTER 25% COTTON (SWEATER), Faux leather material for style and comfort / 2 pockets of front, 2-For-One Hooded denim style faux leather jacket, Button detail on waist / Detail stitching at sides, HAND WASH ONLY / DO NOT BLEACH / LINE DRY / DO NOT IRON\",\n        \"category\": \"women's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_.jpg\",\n        \"rating\": {\n            \"rate\": 2.9,\n            \"count\": 340\n        }\n    },\n    {\n        \"id\": 17,\n        \"title\": \"Rain Jacket Women Windbreaker Striped Climbing Raincoats\",\n        \"price\": 39.99,\n        \"description\": \"Lightweight perfet for trip or casual wear---Long sleeve with hooded, adjustable drawstring waist design. Button and zipper front closure raincoat, fully stripes Lined and The Raincoat has 2 side pockets are a good size to hold all kinds of things, it covers the hips, and the hood is generous but doesn't overdo it.Attached Cotton Lined Hood with Adjustable Drawstrings give it a real styled look.\",\n        \"category\": \"women's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg\",\n        \"rating\": {\n            \"rate\": 3.8,\n            \"count\": 679\n        }\n    },\n    {\n        \"id\": 18,\n        \"title\": \"MBJ Women's Solid Short Sleeve Boat Neck V \",\n        \"price\": 9.85,\n        \"description\": \"95% RAYON 5% SPANDEX, Made in USA or Imported, Do Not Bleach, Lightweight fabric with great stretch for comfort, Ribbed on sleeves and neckline / Double stitching on bottom hem\",\n        \"category\": \"women's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg\",\n        \"rating\": {\n            \"rate\": 4.7,\n            \"count\": 130\n        }\n    },\n    {\n        \"id\": 19,\n        \"title\": \"Opna Women's Short Sleeve Moisture\",\n        \"price\": 7.95,\n        \"description\": \"100% Polyester, Machine wash, 100% cationic polyester interlock, Machine Wash & Pre Shrunk for a Great Fit, Lightweight, roomy and highly breathable with moisture wicking fabric which helps to keep moisture away, Soft Lightweight Fabric with comfortable V-neck collar and a slimmer fit, delivers a sleek, more feminine silhouette and Added Comfort\",\n        \"category\": \"women's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg\",\n        \"rating\": {\n            \"rate\": 4.5,\n            \"count\": 146\n        }\n    },\n    {\n        \"id\": 20,\n        \"title\": \"DANVOUY Womens T Shirt Casual Cotton Short\",\n        \"price\": 12.99,\n        \"description\": \"95%Cotton,5%Spandex, Features: Casual, Short Sleeve, Letter Print,V-Neck,Fashion Tees, The fabric is soft and has some stretch., Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.\",\n        \"category\": \"women's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg\",\n        \"rating\": {\n            \"rate\": 3.6,\n            \"count\": 145\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "SingleProduct",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that an resource include the correct properties\", function () {\r",
+									"     let responseJSON = pm.response.json();\r",
+									"     pm.expect(responseJSON).to.be.an('object');\r",
+									"     pm.expect(responseJSON).to.have.property('id');\r",
+									"     pm.expect(responseJSON).to.have.property('title');\r",
+									"     pm.expect(responseJSON).to.have.property('price');\r",
+									"     pm.expect(responseJSON).to.have.property('description');\r",
+									"     pm.expect(responseJSON).to.have.property('category');\r",
+									"     pm.expect(responseJSON).to.have.property('image');\r",
+									"     pm.expect(responseJSON).to.have.property('rating');\r",
+									"\r",
+									"     pm.expect(responseJSON.title).to.not.be.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/products/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "SingleProduct",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/products/1",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"products",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:04:00 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"16c-MMdrqY6N0sTiefLdsgtBej9eunY\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=xrI4MBNiWaTAs07TwzRKwstVQO2gxCCycypZxa1SeNnX9VxmxwRUl76griRr%2F9Ah7YSyjIYx2ivRGBEZMLa%2Fq80%2BESGnqQjbY%2FUIWwFxW9zayD7HMPc%2FUh6i50ZsYwv%2Be4SE\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a361c4881d0615-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=2274&min_rtt=2111&rtt_var=908&sent=4&recv=5&lost=0&retrans=0&sent_bytes=2840&recv_bytes=718&delivery_rate=1371861&cwnd=251&unsent_bytes=0&cid=d627007f63d4a2b1&ts=134&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"title\": \"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops\",\n    \"price\": 109.95,\n    \"description\": \"Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday\",\n    \"category\": \"men's clothing\",\n    \"image\": \"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg\",\n    \"rating\": {\n        \"rate\": 3.9,\n        \"count\": 120\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "LimitResults",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that the length of the response matches with the limit\", function(){\r",
+									"     let responseJSON = pm.response.json();\r",
+									"     pm.expect(responseJSON).to.be.an('array');\r",
+									"     pm.expect(responseJSON).to.have.lengthOf(5);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/products?limit=5",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "LimitResults",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/products?limit=5",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:04:13 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"901-RZCdFEZQ+j7q2G9bMJOMuLfz40Y\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=QiPph4Srj583Zjy6HvXA27CdG8JYgzWyg%2FDcTe2Nuiu%2BPLbN9c8sA8cg8c11Wy%2Fv2t7cO8cacOUmEkrk88%2Brpuqfe3w14NvgRpMrbCexfNHV6SYuqd5wo%2FBi%2Bs1jkewOBpwG\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a362196f0f0615-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=7735&min_rtt=2111&rtt_var=11476&sent=8&recv=8&lost=0&retrans=0&sent_bytes=4548&recv_bytes=984&delivery_rate=1371861&cwnd=254&unsent_bytes=0&cid=d627007f63d4a2b1&ts=13720&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops\",\n        \"price\": 109.95,\n        \"description\": \"Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday\",\n        \"category\": \"men's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg\",\n        \"rating\": {\n            \"rate\": 3.9,\n            \"count\": 120\n        }\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Mens Casual Premium Slim Fit T-Shirts \",\n        \"price\": 22.3,\n        \"description\": \"Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.\",\n        \"category\": \"men's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg\",\n        \"rating\": {\n            \"rate\": 4.1,\n            \"count\": 259\n        }\n    },\n    {\n        \"id\": 3,\n        \"title\": \"Mens Cotton Jacket\",\n        \"price\": 55.99,\n        \"description\": \"great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.\",\n        \"category\": \"men's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg\",\n        \"rating\": {\n            \"rate\": 4.7,\n            \"count\": 500\n        }\n    },\n    {\n        \"id\": 4,\n        \"title\": \"Mens Casual Slim Fit\",\n        \"price\": 15.99,\n        \"description\": \"The color could be slightly different between on the screen and in practice. / Please note that body builds vary by person, therefore, detailed size information should be reviewed below on the product description.\",\n        \"category\": \"men's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg\",\n        \"rating\": {\n            \"rate\": 2.1,\n            \"count\": 430\n        }\n    },\n    {\n        \"id\": 5,\n        \"title\": \"John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet\",\n        \"price\": 695,\n        \"description\": \"From our Legends Collection, the Naga was inspired by the mythical water dragon that protects the ocean's pearl. Wear facing inward to be bestowed with love and abundance, or outward for protection.\",\n        \"category\": \"jewelery\",\n        \"image\": \"https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg\",\n        \"rating\": {\n            \"rate\": 4.6,\n            \"count\": 400\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "SortResults",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that the resources are sorted by id\", function () {\r",
+									"     let responseJSON = pm.response.json();\r",
+									"     pm.expect(responseJSON).to.be.an('array');\r",
+									"     \r",
+									"     let sortedById = true;\r",
+									"     for (let i = 0; i < responseJSON.length - 1; i++) {\r",
+									"            if (responseJSON[i].id < responseJSON[i + 1].id) {\r",
+									"                sortedById = false;\r",
+									"                break;\r",
+									"            }\r",
+									"     }\r",
+									"     pm.expect(sortedById).to.be.true;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/products?sort=desc",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "SortResults",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/products?sort=desc",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "sort",
+											"value": "desc"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:04:38 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"297c-kgtAqsPV+9MMR0dzy4sqhhSyR9Q\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=XQvk5Zddn74DwLcsVqCpz8IqH8fKFsLUoI%2B2hNkxgaAyeJglzALtkkkWapvNnBam8F5o0n0CO5k8%2Bl%2B43TAwW42%2FbMUGJid11626BKyfY5Tu6gJYWpIxo73frDk6eGBZeoIx\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a362b55885827a-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=2430&min_rtt=2203&rtt_var=988&sent=3&recv=5&lost=0&retrans=0&sent_bytes=219&recv_bytes=981&delivery_rate=657285&cwnd=250&unsent_bytes=0&cid=870cbe89fb927978&ts=148&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 20,\n        \"title\": \"DANVOUY Womens T Shirt Casual Cotton Short\",\n        \"price\": 12.99,\n        \"description\": \"95%Cotton,5%Spandex, Features: Casual, Short Sleeve, Letter Print,V-Neck,Fashion Tees, The fabric is soft and has some stretch., Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.\",\n        \"category\": \"women's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg\",\n        \"rating\": {\n            \"rate\": 3.6,\n            \"count\": 145\n        }\n    },\n    {\n        \"id\": 19,\n        \"title\": \"Opna Women's Short Sleeve Moisture\",\n        \"price\": 7.95,\n        \"description\": \"100% Polyester, Machine wash, 100% cationic polyester interlock, Machine Wash & Pre Shrunk for a Great Fit, Lightweight, roomy and highly breathable with moisture wicking fabric which helps to keep moisture away, Soft Lightweight Fabric with comfortable V-neck collar and a slimmer fit, delivers a sleek, more feminine silhouette and Added Comfort\",\n        \"category\": \"women's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg\",\n        \"rating\": {\n            \"rate\": 4.5,\n            \"count\": 146\n        }\n    },\n    {\n        \"id\": 18,\n        \"title\": \"MBJ Women's Solid Short Sleeve Boat Neck V \",\n        \"price\": 9.85,\n        \"description\": \"95% RAYON 5% SPANDEX, Made in USA or Imported, Do Not Bleach, Lightweight fabric with great stretch for comfort, Ribbed on sleeves and neckline / Double stitching on bottom hem\",\n        \"category\": \"women's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg\",\n        \"rating\": {\n            \"rate\": 4.7,\n            \"count\": 130\n        }\n    },\n    {\n        \"id\": 17,\n        \"title\": \"Rain Jacket Women Windbreaker Striped Climbing Raincoats\",\n        \"price\": 39.99,\n        \"description\": \"Lightweight perfet for trip or casual wear---Long sleeve with hooded, adjustable drawstring waist design. Button and zipper front closure raincoat, fully stripes Lined and The Raincoat has 2 side pockets are a good size to hold all kinds of things, it covers the hips, and the hood is generous but doesn't overdo it.Attached Cotton Lined Hood with Adjustable Drawstrings give it a real styled look.\",\n        \"category\": \"women's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg\",\n        \"rating\": {\n            \"rate\": 3.8,\n            \"count\": 679\n        }\n    },\n    {\n        \"id\": 16,\n        \"title\": \"Lock and Love Women's Removable Hooded Faux Leather Moto Biker Jacket\",\n        \"price\": 29.95,\n        \"description\": \"100% POLYURETHANE(shell) 100% POLYESTER(lining) 75% POLYESTER 25% COTTON (SWEATER), Faux leather material for style and comfort / 2 pockets of front, 2-For-One Hooded denim style faux leather jacket, Button detail on waist / Detail stitching at sides, HAND WASH ONLY / DO NOT BLEACH / LINE DRY / DO NOT IRON\",\n        \"category\": \"women's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_.jpg\",\n        \"rating\": {\n            \"rate\": 2.9,\n            \"count\": 340\n        }\n    },\n    {\n        \"id\": 15,\n        \"title\": \"BIYLACLESEN Women's 3-in-1 Snowboard Jacket Winter Coats\",\n        \"price\": 56.99,\n        \"description\": \"Note:The Jackets is US standard size, Please choose size as your usual wear Material: 100% Polyester; Detachable Liner Fabric: Warm Fleece. Detachable Functional Liner: Skin Friendly, Lightweigt and Warm.Stand Collar Liner jacket, keep you warm in cold weather. Zippered Pockets: 2 Zippered Hand Pockets, 2 Zippered Pockets on Chest (enough to keep cards or keys)and 1 Hidden Pocket Inside.Zippered Hand Pockets and Hidden Pocket keep your things secure. Humanized Design: Adjustable and Detachable Hood and Adjustable cuff to prevent the wind and water,for a comfortable fit. 3 in 1 Detachable Design provide more convenience, you can separate the coat and inner as needed, or wear it together. It is suitable for different season and help you adapt to different climates\",\n        \"category\": \"women's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg\",\n        \"rating\": {\n            \"rate\": 2.6,\n            \"count\": 235\n        }\n    },\n    {\n        \"id\": 14,\n        \"title\": \"Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) – Super Ultrawide Screen QLED \",\n        \"price\": 999.99,\n        \"description\": \"49 INCH SUPER ULTRAWIDE 32:9 CURVED GAMING MONITOR with dual 27 inch screen side by side QUANTUM DOT (QLED) TECHNOLOGY, HDR support and factory calibration provides stunningly realistic and accurate color and contrast 144HZ HIGH REFRESH RATE and 1ms ultra fast response time work to eliminate motion blur, ghosting, and reduce input lag\",\n        \"category\": \"electronics\",\n        \"image\": \"https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg\",\n        \"rating\": {\n            \"rate\": 2.2,\n            \"count\": 140\n        }\n    },\n    {\n        \"id\": 13,\n        \"title\": \"Acer SB220Q bi 21.5 inches Full HD (1920 x 1080) IPS Ultra-Thin\",\n        \"price\": 599,\n        \"description\": \"21. 5 inches Full HD (1920 x 1080) widescreen IPS display And Radeon free Sync technology. No compatibility for VESA Mount Refresh Rate: 75Hz - Using HDMI port Zero-frame design | ultra-thin | 4ms response time | IPS panel Aspect ratio - 16: 9. Color Supported - 16. 7 million colors. Brightness - 250 nit Tilt angle -5 degree to 15 degree. Horizontal viewing angle-178 degree. Vertical viewing angle-178 degree 75 hertz\",\n        \"category\": \"electronics\",\n        \"image\": \"https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg\",\n        \"rating\": {\n            \"rate\": 2.9,\n            \"count\": 250\n        }\n    },\n    {\n        \"id\": 12,\n        \"title\": \"WD 4TB Gaming Drive Works with Playstation 4 Portable External Hard Drive\",\n        \"price\": 114,\n        \"description\": \"Expand your PS4 gaming experience, Play anywhere Fast and easy, setup Sleek design with high capacity, 3-year manufacturer's limited warranty\",\n        \"category\": \"electronics\",\n        \"image\": \"https://fakestoreapi.com/img/61mtL65D4cL._AC_SX679_.jpg\",\n        \"rating\": {\n            \"rate\": 4.8,\n            \"count\": 400\n        }\n    },\n    {\n        \"id\": 11,\n        \"title\": \"Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance Boost SATA III 2.5\",\n        \"price\": 109,\n        \"description\": \"3D NAND flash are applied to deliver high transfer speeds Remarkable transfer speeds that enable faster bootup and improved overall system performance. The advanced SLC Cache Technology allows performance boost and longer lifespan 7mm slim design suitable for Ultrabooks and Ultra-slim notebooks. Supports TRIM command, Garbage Collection technology, RAID, and ECC (Error Checking & Correction) to provide the optimized performance and enhanced reliability.\",\n        \"category\": \"electronics\",\n        \"image\": \"https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg\",\n        \"rating\": {\n            \"rate\": 4.8,\n            \"count\": 319\n        }\n    },\n    {\n        \"id\": 10,\n        \"title\": \"SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s\",\n        \"price\": 109,\n        \"description\": \"Easy upgrade for faster boot up, shutdown, application load and response (As compared to 5400 RPM SATA 2.5” hard drive; Based on published specifications and internal benchmarking tests using PCMark vantage scores) Boosts burst write performance, making it ideal for typical PC workloads The perfect balance of performance and reliability Read/write speeds of up to 535MB/s/450MB/s (Based on internal testing; Performance may vary depending upon drive capacity, host device, OS and application.)\",\n        \"category\": \"electronics\",\n        \"image\": \"https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg\",\n        \"rating\": {\n            \"rate\": 2.9,\n            \"count\": 470\n        }\n    },\n    {\n        \"id\": 9,\n        \"title\": \"WD 2TB Elements Portable External Hard Drive - USB 3.0 \",\n        \"price\": 64,\n        \"description\": \"USB 3.0 and USB 2.0 Compatibility Fast data transfers Improve PC Performance High Capacity; Compatibility Formatted NTFS for Windows 10, Windows 8.1, Windows 7; Reformatting may be required for other operating systems; Compatibility may vary depending on user’s hardware configuration and operating system\",\n        \"category\": \"electronics\",\n        \"image\": \"https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg\",\n        \"rating\": {\n            \"rate\": 3.3,\n            \"count\": 203\n        }\n    },\n    {\n        \"id\": 8,\n        \"title\": \"Pierced Owl Rose Gold Plated Stainless Steel Double\",\n        \"price\": 10.99,\n        \"description\": \"Rose Gold Plated Double Flared Tunnel Plug Earrings. Made of 316L Stainless Steel\",\n        \"category\": \"jewelery\",\n        \"image\": \"https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg\",\n        \"rating\": {\n            \"rate\": 1.9,\n            \"count\": 100\n        }\n    },\n    {\n        \"id\": 7,\n        \"title\": \"White Gold Plated Princess\",\n        \"price\": 9.99,\n        \"description\": \"Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine's Day...\",\n        \"category\": \"jewelery\",\n        \"image\": \"https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg\",\n        \"rating\": {\n            \"rate\": 3,\n            \"count\": 400\n        }\n    },\n    {\n        \"id\": 6,\n        \"title\": \"Solid Gold Petite Micropave \",\n        \"price\": 168,\n        \"description\": \"Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.\",\n        \"category\": \"jewelery\",\n        \"image\": \"https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg\",\n        \"rating\": {\n            \"rate\": 3.9,\n            \"count\": 70\n        }\n    },\n    {\n        \"id\": 5,\n        \"title\": \"John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet\",\n        \"price\": 695,\n        \"description\": \"From our Legends Collection, the Naga was inspired by the mythical water dragon that protects the ocean's pearl. Wear facing inward to be bestowed with love and abundance, or outward for protection.\",\n        \"category\": \"jewelery\",\n        \"image\": \"https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg\",\n        \"rating\": {\n            \"rate\": 4.6,\n            \"count\": 400\n        }\n    },\n    {\n        \"id\": 4,\n        \"title\": \"Mens Casual Slim Fit\",\n        \"price\": 15.99,\n        \"description\": \"The color could be slightly different between on the screen and in practice. / Please note that body builds vary by person, therefore, detailed size information should be reviewed below on the product description.\",\n        \"category\": \"men's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg\",\n        \"rating\": {\n            \"rate\": 2.1,\n            \"count\": 430\n        }\n    },\n    {\n        \"id\": 3,\n        \"title\": \"Mens Cotton Jacket\",\n        \"price\": 55.99,\n        \"description\": \"great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.\",\n        \"category\": \"men's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg\",\n        \"rating\": {\n            \"rate\": 4.7,\n            \"count\": 500\n        }\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Mens Casual Premium Slim Fit T-Shirts \",\n        \"price\": 22.3,\n        \"description\": \"Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.\",\n        \"category\": \"men's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg\",\n        \"rating\": {\n            \"rate\": 4.1,\n            \"count\": 259\n        }\n    },\n    {\n        \"id\": 1,\n        \"title\": \"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops\",\n        \"price\": 109.95,\n        \"description\": \"Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday\",\n        \"category\": \"men's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg\",\n        \"rating\": {\n            \"rate\": 3.9,\n            \"count\": 120\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "AllCategories",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that the categories include a categories correctly\", function () {\r",
+									"    let responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson).to.be.an('array');\r",
+									"\r",
+									"    pm.expect(responseJson).to.include(\"electronics\");\r",
+									"    pm.expect(responseJson).to.include(\"jewelery\");\r",
+									"    pm.expect(responseJson).to.include(\"men's clothing\");\r",
+									"    pm.expect(responseJson).to.include(\"women's clothing\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/products/categories",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								"categories"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "AllCategories",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/products/categories",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"products",
+										"categories"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:04:57 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"3e-cdq81BKoKIRIQmboBVN84Vj+vkM\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=aX%2Bn0facxup52CtehTdKqc9B48w3Zdnjbl%2BRJVtgQdVgYhxKsqNnciYdwKxkcaxXEhcXM5T17s2nPo5iM2W2%2FP0rJyqL9CDDeDaKAjDlNoYMAkmh5eEzl6rPxyBY%2FurQgyxs\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a36329c867f282-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=1564&min_rtt=1456&rtt_var=623&sent=3&recv=5&lost=0&retrans=0&sent_bytes=219&recv_bytes=982&delivery_rate=994505&cwnd=250&unsent_bytes=0&cid=94141c00f6c97f35&ts=119&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "[\n    \"electronics\",\n    \"jewelery\",\n    \"men's clothing\",\n    \"women's clothing\"\n]"
+						}
+					]
+				},
+				{
+					"name": "Products in a Specific Category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that all results contain the expected category\",function(){\r",
+									"    let responseJson = pm.response.json(); \r",
+									"    pm.expect(responseJson).to.be.an(\"array\"); \r",
+									"\r",
+									"    responseJson.forEach(data => {\r",
+									"        pm.expect(data.category).to.equal(\"jewelery\"); \r",
+									"    })\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/products/category/jewelery",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								"category",
+								"jewelery"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Products in a Specific Category",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/products/category/jewelery",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"products",
+										"category",
+										"jewelery"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:05:14 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"600-TYzZtPQf3JY+/8kxrd+p3oB2PyM\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=rK1WYj4IcDXa%2BI85BF5sDmekeEdVCy26f9IFIC7WEDnAm61UaTDE2ke2a0HXz7U5nccqqdaQMoATCpPLJu1ReF2sJB%2B2YBVu8UKwJIEq3jWtfQ6WrmUvP1VDg8L9wRRu0P5t\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a363938ff22413-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=2424&min_rtt=2235&rtt_var=973&sent=3&recv=5&lost=0&retrans=0&sent_bytes=219&recv_bytes=989&delivery_rate=647874&cwnd=250&unsent_bytes=0&cid=aca20b16a3d853b7&ts=221&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 5,\n        \"title\": \"John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet\",\n        \"price\": 695,\n        \"description\": \"From our Legends Collection, the Naga was inspired by the mythical water dragon that protects the ocean's pearl. Wear facing inward to be bestowed with love and abundance, or outward for protection.\",\n        \"category\": \"jewelery\",\n        \"image\": \"https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg\",\n        \"rating\": {\n            \"rate\": 4.6,\n            \"count\": 400\n        }\n    },\n    {\n        \"id\": 6,\n        \"title\": \"Solid Gold Petite Micropave \",\n        \"price\": 168,\n        \"description\": \"Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.\",\n        \"category\": \"jewelery\",\n        \"image\": \"https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg\",\n        \"rating\": {\n            \"rate\": 3.9,\n            \"count\": 70\n        }\n    },\n    {\n        \"id\": 7,\n        \"title\": \"White Gold Plated Princess\",\n        \"price\": 9.99,\n        \"description\": \"Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine's Day...\",\n        \"category\": \"jewelery\",\n        \"image\": \"https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg\",\n        \"rating\": {\n            \"rate\": 3,\n            \"count\": 400\n        }\n    },\n    {\n        \"id\": 8,\n        \"title\": \"Pierced Owl Rose Gold Plated Stainless Steel Double\",\n        \"price\": 10.99,\n        \"description\": \"Rose Gold Plated Double Flared Tunnel Plug Earrings. Made of 316L Stainless Steel\",\n        \"category\": \"jewelery\",\n        \"image\": \"https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg\",\n        \"rating\": {\n            \"rate\": 1.9,\n            \"count\": 100\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "New Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that the new element have the propertie id\",function(){\r",
+									"    let responseJson = pm.response.json(); \r",
+									"\r",
+									"    pm.expect(responseJson).to.have.property('id'); \r",
+									"    pm.expect(responseJson.id).to.be.above(0);\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"Playstation 5\",\r\n    \"price\" : 500.2,\r\n    \"description\" : \"Playstation console\",\r\n    \"image\" : \"https://i.pravatar.cc\",\r\n    \"cateogry\" : \"electronic\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/products",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\" : \"Playstation 5\",\r\n    \"price\" : 500.2,\r\n    \"description\" : \"Playstation console\",\r\n    \"image\" : \"https://i.pravatar.cc\",\r\n    \"cateogry\" : \"electronic\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/products",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:05:25 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"73-Opr48VDcE8QKii82ZUgqrVflVQU\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=EeZo%2Fv%2BaCA%2FUN%2Fx0b%2F3ECqg9MEpcSNrnDsQ2NPCFEFQnU9pZUK0hAdEzx1KH0NWHgVBPhHs2HBwNYxqGrdeWHH81I0d8jCmNZ1cReL0fd%2FcqsAzP82xekO%2F4W4RlPwtitIBW\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a363d99ff53b41-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=2613&min_rtt=2438&rtt_var=1039&sent=3&recv=5&lost=0&retrans=0&sent_bytes=219&recv_bytes=1198&delivery_rate=593929&cwnd=250&unsent_bytes=0&cid=667a0d61396bf324&ts=148&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 21,\n    \"title\": \"Playstation 5\",\n    \"price\": 500.2,\n    \"description\": \"Playstation console\",\n    \"image\": \"https://i.pravatar.cc\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update a Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"Xbox\",\r\n    \"price\" : 239.2,\r\n    \"description\" : \"Xbox console\",\r\n    \"image\" : \"https://i.pravatar.cc\",\r\n    \"cateogry\" : \"electronic\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/products/21",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								"21"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update a Product",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\" : \"Xbox\",\r\n    \"price\" : 239.2,\r\n    \"description\" : \"Xbox console\",\r\n    \"image\" : \"https://i.pravatar.cc\",\r\n    \"cateogry\" : \"electronic\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/products/21",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"products",
+										"21"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:05:51 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"63-CiT0Y9GFeRaNps4wDtxoK540YHc\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=Con4sKsT3WfCddSojPklzWyxk6%2BJZ4U%2FGsxgcxBZGA8JYeAiEUpRv15OqXmONcQz09u02pSG7ZceRMz49Xl9m1xfVIAMzgMFGdbZNRHc4jezrLfNjUt69WWteJycObG1hKv8\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a3647e9f9b7fff-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=1634&min_rtt=1491&rtt_var=661&sent=4&recv=5&lost=0&retrans=0&sent_bytes=2841&recv_bytes=929&delivery_rate=1942320&cwnd=251&unsent_bytes=0&cid=418dcc75b2079fca&ts=136&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 21,\n    \"title\": \"Xbox\",\n    \"price\": 239.2,\n    \"description\": \"Xbox console\",\n    \"image\": \"https://i.pravatar.cc\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update a partial Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"price\" : 400,\r\n    \"description\" : \"The price at this product has been changed\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/products/2",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update a partial Product",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"price\" : 400,\r\n    \"description\" : \"The price at this product has been changed\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/products/2",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"products",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:06:08 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"4f-Epw1Gjkpf/CYHG97ESarl1YiJgA\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=mBsFWtkJhK8r2X9cPL31mc4OASgcd2hFhA3W8%2FjBpDe04TcBXQKHilCe%2FySev0usuoE8E0O%2FMUUMqpEQlSEZ0O6KK4m4UuOXeRT1vHODm0KHdQMSvq1YJuFsvb0ATL9uPDMS\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a364e68946c968-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=3368&min_rtt=3135&rtt_var=1342&sent=3&recv=5&lost=0&retrans=0&sent_bytes=219&recv_bytes=1117&delivery_rate=461881&cwnd=250&unsent_bytes=0&cid=1fdfbb8c2b0e35fe&ts=129&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"price\": 400,\n    \"description\": \"The price at this product has been changed\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/products/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Product",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/products/1",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"products",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:06:15 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"16c-MMdrqY6N0sTiefLdsgtBej9eunY\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=OMU6PPSeqPgUQHhVohthlxwoz27dwU56ODQhRG61Md3LU%2FHzhO2W92l7hu8r4tXdy0mjbvgjvbqfG3DIdhL1QVt7nzLRhXlnXW92ID7DheT87ePYM7XtfauqZsPjBoUx%2BCoo\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a365142a0ec968-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=8712&min_rtt=3135&rtt_var=11532&sent=7&recv=8&lost=0&retrans=0&sent_bytes=1715&recv_bytes=1380&delivery_rate=915876&cwnd=253&unsent_bytes=0&cid=1fdfbb8c2b0e35fe&ts=7520&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"title\": \"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops\",\n    \"price\": 109.95,\n    \"description\": \"Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday\",\n    \"category\": \"men's clothing\",\n    \"image\": \"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg\",\n    \"rating\": {\n        \"rate\": 3.9,\n        \"count\": 120\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "All Carts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/carts",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"carts"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "All Carts",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/carts",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"carts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:06:32 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"3a8-j3C8983spvK8GpaSYa+SyYlAS2A\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=Qik21KMbxZVmBl5229ths%2FPJAoouDkwaRie7zS%2BinUm5WcV2IiqI%2BphzeD%2F8UzotLFIa9acxAVp%2BlC56bftnDZRALXbaYpfkfjPQAJRmALiehLiNKZ2EV8bHf7yjr3XxcTJE\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a3657cbbc9c968-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=7447&min_rtt=3135&rtt_var=8681&sent=10&recv=11&lost=0&retrans=0&sent_bytes=2968&recv_bytes=1635&delivery_rate=915876&cwnd=255&unsent_bytes=0&cid=1fdfbb8c2b0e35fe&ts=24255&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"userId\": 1,\n        \"date\": \"2020-03-02T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 1,\n                \"quantity\": 4\n            },\n            {\n                \"productId\": 2,\n                \"quantity\": 1\n            },\n            {\n                \"productId\": 3,\n                \"quantity\": 6\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 2,\n        \"userId\": 1,\n        \"date\": \"2020-01-02T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 2,\n                \"quantity\": 4\n            },\n            {\n                \"productId\": 1,\n                \"quantity\": 10\n            },\n            {\n                \"productId\": 5,\n                \"quantity\": 2\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 3,\n        \"userId\": 2,\n        \"date\": \"2020-03-01T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 1,\n                \"quantity\": 2\n            },\n            {\n                \"productId\": 9,\n                \"quantity\": 1\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 4,\n        \"userId\": 3,\n        \"date\": \"2020-01-01T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 1,\n                \"quantity\": 4\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 5,\n        \"userId\": 3,\n        \"date\": \"2020-03-01T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 7,\n                \"quantity\": 1\n            },\n            {\n                \"productId\": 8,\n                \"quantity\": 1\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 6,\n        \"userId\": 4,\n        \"date\": \"2020-03-01T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 10,\n                \"quantity\": 2\n            },\n            {\n                \"productId\": 12,\n                \"quantity\": 3\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 7,\n        \"userId\": 8,\n        \"date\": \"2020-03-01T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 18,\n                \"quantity\": 1\n            }\n        ],\n        \"__v\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Single cart",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/carts/2",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"carts",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Single cart",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/carts/2",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"carts",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:06:39 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"a2-iVKAFZNDVn5u19OI7Bz+kha8xjg\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=ymcn4p%2BAfJhOmMueu36g9IlvoNF4PrUlHRL3tkL0UPpweAeLJxijtG2Pai4Az7IHxeVm%2FlfHEqBZgo80GAblu%2Fp%2F1%2BoajWup%2B0vuMeCjCFyApfn5WdxtQTMOVCWx%2F9%2Fs3kLp\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a365a6aa9d7fff-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=1532&min_rtt=1344&rtt_var=638&sent=3&recv=5&lost=0&retrans=0&sent_bytes=219&recv_bytes=970&delivery_rate=1077380&cwnd=250&unsent_bytes=0&cid=2778466d2ba9eaed&ts=217&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"userId\": 1,\n    \"date\": \"2020-01-02T00:00:00.000Z\",\n    \"products\": [\n        {\n            \"productId\": 2,\n            \"quantity\": 4\n        },\n        {\n            \"productId\": 1,\n            \"quantity\": 10\n        },\n        {\n            \"productId\": 5,\n            \"quantity\": 2\n        }\n    ],\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Limit results",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/carts?limit=2",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"carts"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Limit results",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/carts?limit=2",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"carts"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:06:47 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"146-FwHfNZmdUPmJQHLVlvUyMMxf3IQ\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=CGh9Dgv09FCmSiYWo8zSV0mjF0tO4CSoavhbXpT6e9V9Ikqw9AqW8RTimheQwmh%2FTYnW5XsZZu7%2F3%2FhsgEGU3uUBCwskgsle9SbTWyAk3IdA99X1PE6jJJjfX0tCdffwCxNo\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a365d7cf882413-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=1942&min_rtt=1772&rtt_var=786&sent=3&recv=5&lost=0&retrans=0&sent_bytes=219&recv_bytes=976&delivery_rate=817155&cwnd=250&unsent_bytes=0&cid=b6076187b348b0cd&ts=224&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"userId\": 1,\n        \"date\": \"2020-03-02T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 1,\n                \"quantity\": 4\n            },\n            {\n                \"productId\": 2,\n                \"quantity\": 1\n            },\n            {\n                \"productId\": 3,\n                \"quantity\": 6\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 2,\n        \"userId\": 1,\n        \"date\": \"2020-01-02T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 2,\n                \"quantity\": 4\n            },\n            {\n                \"productId\": 1,\n                \"quantity\": 10\n            },\n            {\n                \"productId\": 5,\n                \"quantity\": 2\n            }\n        ],\n        \"__v\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Sort results",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/carts?sort=desc",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"carts"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Sort results",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/carts?sort=desc",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"carts"
+									],
+									"query": [
+										{
+											"key": "sort",
+											"value": "desc"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:06:56 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"3a8-nb02RQT3OuKfcepxTeTynGjWm8Q\""
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Cf-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a366113bef2413-IAD"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 7,\n        \"userId\": 8,\n        \"date\": \"2020-03-01T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 18,\n                \"quantity\": 1\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 6,\n        \"userId\": 4,\n        \"date\": \"2020-03-01T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 10,\n                \"quantity\": 2\n            },\n            {\n                \"productId\": 12,\n                \"quantity\": 3\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 5,\n        \"userId\": 3,\n        \"date\": \"2020-03-01T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 7,\n                \"quantity\": 1\n            },\n            {\n                \"productId\": 8,\n                \"quantity\": 1\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 4,\n        \"userId\": 3,\n        \"date\": \"2020-01-01T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 1,\n                \"quantity\": 4\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 3,\n        \"userId\": 2,\n        \"date\": \"2020-03-01T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 1,\n                \"quantity\": 2\n            },\n            {\n                \"productId\": 9,\n                \"quantity\": 1\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 2,\n        \"userId\": 1,\n        \"date\": \"2020-01-02T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 2,\n                \"quantity\": 4\n            },\n            {\n                \"productId\": 1,\n                \"quantity\": 10\n            },\n            {\n                \"productId\": 5,\n                \"quantity\": 2\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 1,\n        \"userId\": 1,\n        \"date\": \"2020-03-02T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 1,\n                \"quantity\": 4\n            },\n            {\n                \"productId\": 2,\n                \"quantity\": 1\n            },\n            {\n                \"productId\": 3,\n                \"quantity\": 6\n            }\n        ],\n        \"__v\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Carts in a date range",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/carts?startdate=2019-12-10&enddate=2020-10-10",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"carts"
+							],
+							"query": [
+								{
+									"key": "startdate",
+									"value": "2019-12-10"
+								},
+								{
+									"key": "enddate",
+									"value": "2020-10-10"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Carts in a date range",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/carts?startdate=2019-12-10&enddate=2020-10-10",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"carts"
+									],
+									"query": [
+										{
+											"key": "startdate",
+											"value": "2019-12-10"
+										},
+										{
+											"key": "enddate",
+											"value": "2020-10-10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:07:03 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"3a8-j3C8983spvK8GpaSYa+SyYlAS2A\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=8PXDL8OlNqcHrErBcQAY8Q1noKC6uHe0Qqe7j0JQRR8vl5h3yaf%2FqD26oHIC9KGB0wENkhLZOMvlymt1uyr%2FwvSc4XrhRsds%2F9tLn9vXqHCzwJVrSDhQPUamwOMNw2n0KpNX\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a366402cc32413-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=5279&min_rtt=1760&rtt_var=7060&sent=11&recv=12&lost=0&retrans=0&sent_bytes=2383&recv_bytes=1536&delivery_rate=2154761&cwnd=256&unsent_bytes=0&cid=b6076187b348b0cd&ts=16914&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"userId\": 1,\n        \"date\": \"2020-03-02T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 1,\n                \"quantity\": 4\n            },\n            {\n                \"productId\": 2,\n                \"quantity\": 1\n            },\n            {\n                \"productId\": 3,\n                \"quantity\": 6\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 2,\n        \"userId\": 1,\n        \"date\": \"2020-01-02T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 2,\n                \"quantity\": 4\n            },\n            {\n                \"productId\": 1,\n                \"quantity\": 10\n            },\n            {\n                \"productId\": 5,\n                \"quantity\": 2\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 3,\n        \"userId\": 2,\n        \"date\": \"2020-03-01T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 1,\n                \"quantity\": 2\n            },\n            {\n                \"productId\": 9,\n                \"quantity\": 1\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 4,\n        \"userId\": 3,\n        \"date\": \"2020-01-01T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 1,\n                \"quantity\": 4\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 5,\n        \"userId\": 3,\n        \"date\": \"2020-03-01T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 7,\n                \"quantity\": 1\n            },\n            {\n                \"productId\": 8,\n                \"quantity\": 1\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 6,\n        \"userId\": 4,\n        \"date\": \"2020-03-01T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 10,\n                \"quantity\": 2\n            },\n            {\n                \"productId\": 12,\n                \"quantity\": 3\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 7,\n        \"userId\": 8,\n        \"date\": \"2020-03-01T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 18,\n                \"quantity\": 1\n            }\n        ],\n        \"__v\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "User carts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/carts/user/3",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"carts",
+								"user",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "User carts",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/carts/user/3",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"carts",
+										"user",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:07:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"ee-oo8D0IT/G+F+Ij/nVOpd6Rs/f0E\""
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Cf-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a36670c8858257-IAD"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 4,\n        \"userId\": 3,\n        \"date\": \"2020-01-01T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 1,\n                \"quantity\": 4\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 5,\n        \"userId\": 3,\n        \"date\": \"2020-03-01T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 7,\n                \"quantity\": 1\n            },\n            {\n                \"productId\": 8,\n                \"quantity\": 1\n            }\n        ],\n        \"__v\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "New product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\" : 10,\r\n    \"date\" : \"2025-01-27\",\r\n    \"products\": [\r\n        {\"productId\": 5,\"quantity\": 1\r\n        },\r\n        {\"productId\": 1,\"quantity\": 5\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/carts",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"carts"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\" : 10,\r\n    \"date\" : \"2025-01-27\",\r\n    \"products\": [\r\n        {\"productId\": 5,\"quantity\": 1\r\n        },\r\n        {\"productId\": 1,\"quantity\": 5\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/carts",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"carts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:07:23 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"3a8-j3C8983spvK8GpaSYa+SyYlAS2A\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=fgBdrDdQAB%2B%2BM%2FpYiKPoZEOsIO%2FcJHWfXYc0IMPg5wGHVRIL3hz90IsfOHhaqCyFQEYwYyQXvci9oSPveNMyO7nMnhqxq41lONdrQMZpshRpTApqzwEg1MUVkxHXa1cWut0%2B\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a366ba7faf2413-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=4482&min_rtt=1760&rtt_var=5357&sent=14&recv=15&lost=0&retrans=0&sent_bytes=3535&recv_bytes=1831&delivery_rate=2154761&cwnd=257&unsent_bytes=0&cid=b6076187b348b0cd&ts=36551&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"userId\": 1,\n        \"date\": \"2020-03-02T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 1,\n                \"quantity\": 4\n            },\n            {\n                \"productId\": 2,\n                \"quantity\": 1\n            },\n            {\n                \"productId\": 3,\n                \"quantity\": 6\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 2,\n        \"userId\": 1,\n        \"date\": \"2020-01-02T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 2,\n                \"quantity\": 4\n            },\n            {\n                \"productId\": 1,\n                \"quantity\": 10\n            },\n            {\n                \"productId\": 5,\n                \"quantity\": 2\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 3,\n        \"userId\": 2,\n        \"date\": \"2020-03-01T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 1,\n                \"quantity\": 2\n            },\n            {\n                \"productId\": 9,\n                \"quantity\": 1\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 4,\n        \"userId\": 3,\n        \"date\": \"2020-01-01T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 1,\n                \"quantity\": 4\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 5,\n        \"userId\": 3,\n        \"date\": \"2020-03-01T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 7,\n                \"quantity\": 1\n            },\n            {\n                \"productId\": 8,\n                \"quantity\": 1\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 6,\n        \"userId\": 4,\n        \"date\": \"2020-03-01T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 10,\n                \"quantity\": 2\n            },\n            {\n                \"productId\": 12,\n                \"quantity\": 3\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"id\": 7,\n        \"userId\": 8,\n        \"date\": \"2020-03-01T00:00:00.000Z\",\n        \"products\": [\n            {\n                \"productId\": 18,\n                \"quantity\": 1\n            }\n        ],\n        \"__v\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Update a cart",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\" : 123,\r\n    \"date\" : \"2001-01-27\",\r\n    \"products\": [\r\n        {\"productId\": 5,\"quantity\": 1\r\n        },\r\n        {\"productId\": 1,\"quantity\": 5\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/carts/7",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"carts",
+								"7"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update a cart",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\" : 123,\r\n    \"date\" : \"2001-01-27\",\r\n    \"products\": [\r\n        {\"productId\": 5,\"quantity\": 1\r\n        },\r\n        {\"productId\": 1,\"quantity\": 5\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/carts/7",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"carts",
+										"7"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:07:32 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"70-NHCqjqxiqR5Z0u2AsacOImgpMz4\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=s7qFOKDUVQr6XLc%2BKlBAmHiTZq%2Beve6bW6R8YcCTUPDlm3kyvA%2F0VaidAgJ8aLMdgXoy971w1JpvckYNxpuoLeJmI%2FGADPKNIAjSl1y8IXPT8FYwL2ehrrI%2FxEbrMDxyFs2Y\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a366f2391639b2-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=2865&min_rtt=2743&rtt_var=1116&sent=3&recv=5&lost=0&retrans=0&sent_bytes=219&recv_bytes=1203&delivery_rate=527889&cwnd=250&unsent_bytes=0&cid=2e26a3b0a524ef4c&ts=162&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 7,\n    \"userId\": 123,\n    \"date\": \"2001-01-27\",\n    \"products\": [\n        {\n            \"productId\": 5,\n            \"quantity\": 1\n        },\n        {\n            \"productId\": 1,\n            \"quantity\": 5\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Update a partial cart",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\" : 123,\r\n    \"date\" : \"1999-01-27\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/carts/7",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"carts",
+								"7"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update a partial cart",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\" : 123,\r\n    \"date\" : \"1999-01-27\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/carts/7",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"carts",
+										"7"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:07:44 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"29-hNCKOuYXMGIXeaKnIiDXE/Boax0\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=oJBxSn7HUJvXX2pcYB6V67F5EKsJXEOSSM4RiC6YtlnXDggbxVKt8OG0fGvHCeKCcW2WBA83fUxnmcd1ONDL7YwSLM7XUMTbKFJHRkmGx0R2ayrZ%2BlAzNWUxPbVYjy1t5UZh\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a3674158902413-IAD"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=3592&min_rtt=1760&rtt_var=3600&sent=18&recv=19&lost=0&retrans=0&sent_bytes=4719&recv_bytes=2192&delivery_rate=2299629&cwnd=4&unsent_bytes=0&cid=b6076187b348b0cd&ts=57977&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 7,\n    \"userId\": 123,\n    \"date\": \"1999-01-27\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete single cart",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/carts/7",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"carts",
+								"7"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete single cart",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/carts/7",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"carts",
+										"7"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:07:53 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"68-YEcOUKT7sA0Ybxu9AanEdP3h1to\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=49BqafRibvdHxNTlGo6tkD%2FhGBjpIYFTEpOgc0%2FC90m1SHwgctQpf%2BRVqyT8LJxbWUSynGmuJ0bsUetO94gANtpSHFlHUgzszYseFTpOZ1RDwjSF7wbfx%2Bm86mX8YjcGsUse\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a36776e9ba2413-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=3370&min_rtt=1760&rtt_var=3142&sent=20&recv=21&lost=0&retrans=0&sent_bytes=5668&recv_bytes=2452&delivery_rate=2299629&cwnd=257&unsent_bytes=0&cid=b6076187b348b0cd&ts=66648&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 7,\n    \"userId\": 8,\n    \"date\": \"2020-03-01T00:00:00.000Z\",\n    \"products\": [\n        {\n            \"productId\": 18,\n            \"quantity\": 1\n        }\n    ],\n    \"__v\": 0\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "All users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/users",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "All users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/users",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:08:06 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"bae-Vi0JNVg0EAD6LcGk4v18ASK0bgA\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=Rc56m2%2FlmA3E6nQq2c%2BlSS%2Bpr8KM8uB7atStt0m5c2WaRux7nmEzVBR7uQLOvA6I%2BWxRCAaHth%2F1etTutkZAIPzF9QST%2B5sbXEIHaI0iumqtUZ4JeIov96A1UY39zhr2KnV4\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a367c82e7b39b2-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=7332&min_rtt=2691&rtt_var=9524&sent=9&recv=10&lost=0&retrans=0&sent_bytes=2685&recv_bytes=1819&delivery_rate=1045864&cwnd=254&unsent_bytes=0&cid=2e26a3b0a524ef4c&ts=34470&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"address\": {\n            \"geolocation\": {\n                \"lat\": \"-37.3159\",\n                \"long\": \"81.1496\"\n            },\n            \"city\": \"kilcoole\",\n            \"street\": \"new road\",\n            \"number\": 7682,\n            \"zipcode\": \"12926-3874\"\n        },\n        \"id\": 1,\n        \"email\": \"john@gmail.com\",\n        \"username\": \"johnd\",\n        \"password\": \"m38rmF$\",\n        \"name\": {\n            \"firstname\": \"john\",\n            \"lastname\": \"doe\"\n        },\n        \"phone\": \"1-570-236-7033\",\n        \"__v\": 0\n    },\n    {\n        \"address\": {\n            \"geolocation\": {\n                \"lat\": \"-37.3159\",\n                \"long\": \"81.1496\"\n            },\n            \"city\": \"kilcoole\",\n            \"street\": \"Lovers Ln\",\n            \"number\": 7267,\n            \"zipcode\": \"12926-3874\"\n        },\n        \"id\": 2,\n        \"email\": \"morrison@gmail.com\",\n        \"username\": \"mor_2314\",\n        \"password\": \"83r5^_\",\n        \"name\": {\n            \"firstname\": \"david\",\n            \"lastname\": \"morrison\"\n        },\n        \"phone\": \"1-570-236-7033\",\n        \"__v\": 0\n    },\n    {\n        \"address\": {\n            \"geolocation\": {\n                \"lat\": \"40.3467\",\n                \"long\": \"-30.1310\"\n            },\n            \"city\": \"Cullman\",\n            \"street\": \"Frances Ct\",\n            \"number\": 86,\n            \"zipcode\": \"29567-1452\"\n        },\n        \"id\": 3,\n        \"email\": \"kevin@gmail.com\",\n        \"username\": \"kevinryan\",\n        \"password\": \"kev02937@\",\n        \"name\": {\n            \"firstname\": \"kevin\",\n            \"lastname\": \"ryan\"\n        },\n        \"phone\": \"1-567-094-1345\",\n        \"__v\": 0\n    },\n    {\n        \"address\": {\n            \"geolocation\": {\n                \"lat\": \"50.3467\",\n                \"long\": \"-20.1310\"\n            },\n            \"city\": \"San Antonio\",\n            \"street\": \"Hunters Creek Dr\",\n            \"number\": 6454,\n            \"zipcode\": \"98234-1734\"\n        },\n        \"id\": 4,\n        \"email\": \"don@gmail.com\",\n        \"username\": \"donero\",\n        \"password\": \"ewedon\",\n        \"name\": {\n            \"firstname\": \"don\",\n            \"lastname\": \"romer\"\n        },\n        \"phone\": \"1-765-789-6734\",\n        \"__v\": 0\n    },\n    {\n        \"address\": {\n            \"geolocation\": {\n                \"lat\": \"40.3467\",\n                \"long\": \"-40.1310\"\n            },\n            \"city\": \"san Antonio\",\n            \"street\": \"adams St\",\n            \"number\": 245,\n            \"zipcode\": \"80796-1234\"\n        },\n        \"id\": 5,\n        \"email\": \"derek@gmail.com\",\n        \"username\": \"derek\",\n        \"password\": \"jklg*_56\",\n        \"name\": {\n            \"firstname\": \"derek\",\n            \"lastname\": \"powell\"\n        },\n        \"phone\": \"1-956-001-1945\",\n        \"__v\": 0\n    },\n    {\n        \"address\": {\n            \"geolocation\": {\n                \"lat\": \"20.1677\",\n                \"long\": \"-10.6789\"\n            },\n            \"city\": \"el paso\",\n            \"street\": \"prospect st\",\n            \"number\": 124,\n            \"zipcode\": \"12346-0456\"\n        },\n        \"id\": 6,\n        \"email\": \"david_r@gmail.com\",\n        \"username\": \"david_r\",\n        \"password\": \"3478*#54\",\n        \"name\": {\n            \"firstname\": \"david\",\n            \"lastname\": \"russell\"\n        },\n        \"phone\": \"1-678-345-9856\",\n        \"__v\": 0\n    },\n    {\n        \"address\": {\n            \"geolocation\": {\n                \"lat\": \"10.3456\",\n                \"long\": \"20.6419\"\n            },\n            \"city\": \"fresno\",\n            \"street\": \"saddle st\",\n            \"number\": 1342,\n            \"zipcode\": \"96378-0245\"\n        },\n        \"id\": 7,\n        \"email\": \"miriam@gmail.com\",\n        \"username\": \"snyder\",\n        \"password\": \"f238&@*$\",\n        \"name\": {\n            \"firstname\": \"miriam\",\n            \"lastname\": \"snyder\"\n        },\n        \"phone\": \"1-123-943-0563\",\n        \"__v\": 0\n    },\n    {\n        \"address\": {\n            \"geolocation\": {\n                \"lat\": \"50.3456\",\n                \"long\": \"10.6419\"\n            },\n            \"city\": \"mesa\",\n            \"street\": \"vally view ln\",\n            \"number\": 1342,\n            \"zipcode\": \"96378-0245\"\n        },\n        \"id\": 8,\n        \"email\": \"william@gmail.com\",\n        \"username\": \"hopkins\",\n        \"password\": \"William56$hj\",\n        \"name\": {\n            \"firstname\": \"william\",\n            \"lastname\": \"hopkins\"\n        },\n        \"phone\": \"1-478-001-0890\",\n        \"__v\": 0\n    },\n    {\n        \"address\": {\n            \"geolocation\": {\n                \"lat\": \"40.12456\",\n                \"long\": \"20.5419\"\n            },\n            \"city\": \"miami\",\n            \"street\": \"avondale ave\",\n            \"number\": 345,\n            \"zipcode\": \"96378-0245\"\n        },\n        \"id\": 9,\n        \"email\": \"kate@gmail.com\",\n        \"username\": \"kate_h\",\n        \"password\": \"kfejk@*_\",\n        \"name\": {\n            \"firstname\": \"kate\",\n            \"lastname\": \"hale\"\n        },\n        \"phone\": \"1-678-456-1934\",\n        \"__v\": 0\n    },\n    {\n        \"address\": {\n            \"geolocation\": {\n                \"lat\": \"30.24788\",\n                \"long\": \"-20.545419\"\n            },\n            \"city\": \"fort wayne\",\n            \"street\": \"oak lawn ave\",\n            \"number\": 526,\n            \"zipcode\": \"10256-4532\"\n        },\n        \"id\": 10,\n        \"email\": \"jimmie@gmail.com\",\n        \"username\": \"jimmie_k\",\n        \"password\": \"klein*#%*\",\n        \"name\": {\n            \"firstname\": \"jimmie\",\n            \"lastname\": \"klein\"\n        },\n        \"phone\": \"1-104-001-4567\",\n        \"__v\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Single user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/users/2",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Single user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/users/2",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"users",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:08:19 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"12d-rQ3vazNILlcEdp3VtaYW0Rr1+SY\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=0EIDZwINEUaG95yXBXGqSjHdaGY3TySDTraORNcADkqfOlxsfJPpQERXAgjUINaTVYOP0UlgPrQTJwBZwjnr6VMFCpEcru9%2FGE7vFR6Udw9KNHhjSAxnQX8q4ifgLcl1txRi\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a3681a88442413-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=3013&min_rtt=1760&rtt_var=2388&sent=23&recv=24&lost=0&retrans=0&sent_bytes=6732&recv_bytes=2709&delivery_rate=2299629&cwnd=257&unsent_bytes=0&cid=b6076187b348b0cd&ts=92819&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"address\": {\n        \"geolocation\": {\n            \"lat\": \"-37.3159\",\n            \"long\": \"81.1496\"\n        },\n        \"city\": \"kilcoole\",\n        \"street\": \"Lovers Ln\",\n        \"number\": 7267,\n        \"zipcode\": \"12926-3874\"\n    },\n    \"id\": 2,\n    \"email\": \"morrison@gmail.com\",\n    \"username\": \"mor_2314\",\n    \"password\": \"83r5^_\",\n    \"name\": {\n        \"firstname\": \"david\",\n        \"lastname\": \"morrison\"\n    },\n    \"phone\": \"1-570-236-7033\",\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Limit results",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/users?limit=3",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Limit results",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/users?limit=3",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:08:35 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"379-AFin0pEiizoj0p4MesFaQfsNi2U\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=r1ZR7UxJsz5OoKNYPV5Sdh6fp8L2dp5wRSdXMy0oNcM1u5Hy1h8GtPPdrRZBy2YxSFQDgAUFscXbgxczxi3CKrxxpjWgzO8zZK%2BbxxsAaV0%2FUoG%2FlyPDdkaG%2FFhy2tqMHLYS\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a3687c7f313b96-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=2642&min_rtt=2474&rtt_var=1048&sent=3&recv=5&lost=0&retrans=0&sent_bytes=219&recv_bytes=976&delivery_rate=585286&cwnd=250&unsent_bytes=0&cid=c1e384a7c6230308&ts=229&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"address\": {\n            \"geolocation\": {\n                \"lat\": \"-37.3159\",\n                \"long\": \"81.1496\"\n            },\n            \"city\": \"kilcoole\",\n            \"street\": \"new road\",\n            \"number\": 7682,\n            \"zipcode\": \"12926-3874\"\n        },\n        \"id\": 1,\n        \"email\": \"john@gmail.com\",\n        \"username\": \"johnd\",\n        \"password\": \"m38rmF$\",\n        \"name\": {\n            \"firstname\": \"john\",\n            \"lastname\": \"doe\"\n        },\n        \"phone\": \"1-570-236-7033\",\n        \"__v\": 0\n    },\n    {\n        \"address\": {\n            \"geolocation\": {\n                \"lat\": \"-37.3159\",\n                \"long\": \"81.1496\"\n            },\n            \"city\": \"kilcoole\",\n            \"street\": \"Lovers Ln\",\n            \"number\": 7267,\n            \"zipcode\": \"12926-3874\"\n        },\n        \"id\": 2,\n        \"email\": \"morrison@gmail.com\",\n        \"username\": \"mor_2314\",\n        \"password\": \"83r5^_\",\n        \"name\": {\n            \"firstname\": \"david\",\n            \"lastname\": \"morrison\"\n        },\n        \"phone\": \"1-570-236-7033\",\n        \"__v\": 0\n    },\n    {\n        \"address\": {\n            \"geolocation\": {\n                \"lat\": \"40.3467\",\n                \"long\": \"-30.1310\"\n            },\n            \"city\": \"Cullman\",\n            \"street\": \"Frances Ct\",\n            \"number\": 86,\n            \"zipcode\": \"29567-1452\"\n        },\n        \"id\": 3,\n        \"email\": \"kevin@gmail.com\",\n        \"username\": \"kevinryan\",\n        \"password\": \"kev02937@\",\n        \"name\": {\n            \"firstname\": \"kevin\",\n            \"lastname\": \"ryan\"\n        },\n        \"phone\": \"1-567-094-1345\",\n        \"__v\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Sort results",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/users?sort=desc",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Sort results",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/users?sort=desc",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": "sort",
+											"value": "desc"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:16:13 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"bae-RmXgfZyGPwU9Dh6EKhIQkuNoVzY\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=nmpAdem%2BZIM347VuMj7NVDPyC7jxlJCdZf%2FHPifRU0j8Ak368%2FZvm6218mfXRNKO7GKc7%2Fqgf5LVqf%2BeBvi%2Bq93QzV06adAyBIUncrbJqJHsXsMspdEFqa6yAeKvrWaTU%2Blu\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a373abc9407fd9-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=1845&min_rtt=1627&rtt_var=766&sent=3&recv=5&lost=0&retrans=0&sent_bytes=219&recv_bytes=978&delivery_rate=889981&cwnd=250&unsent_bytes=0&cid=012e6477f18830ed&ts=481&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"address\": {\n            \"geolocation\": {\n                \"lat\": \"30.24788\",\n                \"long\": \"-20.545419\"\n            },\n            \"city\": \"fort wayne\",\n            \"street\": \"oak lawn ave\",\n            \"number\": 526,\n            \"zipcode\": \"10256-4532\"\n        },\n        \"id\": 10,\n        \"email\": \"jimmie@gmail.com\",\n        \"username\": \"jimmie_k\",\n        \"password\": \"klein*#%*\",\n        \"name\": {\n            \"firstname\": \"jimmie\",\n            \"lastname\": \"klein\"\n        },\n        \"phone\": \"1-104-001-4567\",\n        \"__v\": 0\n    },\n    {\n        \"address\": {\n            \"geolocation\": {\n                \"lat\": \"40.12456\",\n                \"long\": \"20.5419\"\n            },\n            \"city\": \"miami\",\n            \"street\": \"avondale ave\",\n            \"number\": 345,\n            \"zipcode\": \"96378-0245\"\n        },\n        \"id\": 9,\n        \"email\": \"kate@gmail.com\",\n        \"username\": \"kate_h\",\n        \"password\": \"kfejk@*_\",\n        \"name\": {\n            \"firstname\": \"kate\",\n            \"lastname\": \"hale\"\n        },\n        \"phone\": \"1-678-456-1934\",\n        \"__v\": 0\n    },\n    {\n        \"address\": {\n            \"geolocation\": {\n                \"lat\": \"50.3456\",\n                \"long\": \"10.6419\"\n            },\n            \"city\": \"mesa\",\n            \"street\": \"vally view ln\",\n            \"number\": 1342,\n            \"zipcode\": \"96378-0245\"\n        },\n        \"id\": 8,\n        \"email\": \"william@gmail.com\",\n        \"username\": \"hopkins\",\n        \"password\": \"William56$hj\",\n        \"name\": {\n            \"firstname\": \"william\",\n            \"lastname\": \"hopkins\"\n        },\n        \"phone\": \"1-478-001-0890\",\n        \"__v\": 0\n    },\n    {\n        \"address\": {\n            \"geolocation\": {\n                \"lat\": \"10.3456\",\n                \"long\": \"20.6419\"\n            },\n            \"city\": \"fresno\",\n            \"street\": \"saddle st\",\n            \"number\": 1342,\n            \"zipcode\": \"96378-0245\"\n        },\n        \"id\": 7,\n        \"email\": \"miriam@gmail.com\",\n        \"username\": \"snyder\",\n        \"password\": \"f238&@*$\",\n        \"name\": {\n            \"firstname\": \"miriam\",\n            \"lastname\": \"snyder\"\n        },\n        \"phone\": \"1-123-943-0563\",\n        \"__v\": 0\n    },\n    {\n        \"address\": {\n            \"geolocation\": {\n                \"lat\": \"20.1677\",\n                \"long\": \"-10.6789\"\n            },\n            \"city\": \"el paso\",\n            \"street\": \"prospect st\",\n            \"number\": 124,\n            \"zipcode\": \"12346-0456\"\n        },\n        \"id\": 6,\n        \"email\": \"david_r@gmail.com\",\n        \"username\": \"david_r\",\n        \"password\": \"3478*#54\",\n        \"name\": {\n            \"firstname\": \"david\",\n            \"lastname\": \"russell\"\n        },\n        \"phone\": \"1-678-345-9856\",\n        \"__v\": 0\n    },\n    {\n        \"address\": {\n            \"geolocation\": {\n                \"lat\": \"40.3467\",\n                \"long\": \"-40.1310\"\n            },\n            \"city\": \"san Antonio\",\n            \"street\": \"adams St\",\n            \"number\": 245,\n            \"zipcode\": \"80796-1234\"\n        },\n        \"id\": 5,\n        \"email\": \"derek@gmail.com\",\n        \"username\": \"derek\",\n        \"password\": \"jklg*_56\",\n        \"name\": {\n            \"firstname\": \"derek\",\n            \"lastname\": \"powell\"\n        },\n        \"phone\": \"1-956-001-1945\",\n        \"__v\": 0\n    },\n    {\n        \"address\": {\n            \"geolocation\": {\n                \"lat\": \"50.3467\",\n                \"long\": \"-20.1310\"\n            },\n            \"city\": \"San Antonio\",\n            \"street\": \"Hunters Creek Dr\",\n            \"number\": 6454,\n            \"zipcode\": \"98234-1734\"\n        },\n        \"id\": 4,\n        \"email\": \"don@gmail.com\",\n        \"username\": \"donero\",\n        \"password\": \"ewedon\",\n        \"name\": {\n            \"firstname\": \"don\",\n            \"lastname\": \"romer\"\n        },\n        \"phone\": \"1-765-789-6734\",\n        \"__v\": 0\n    },\n    {\n        \"address\": {\n            \"geolocation\": {\n                \"lat\": \"40.3467\",\n                \"long\": \"-30.1310\"\n            },\n            \"city\": \"Cullman\",\n            \"street\": \"Frances Ct\",\n            \"number\": 86,\n            \"zipcode\": \"29567-1452\"\n        },\n        \"id\": 3,\n        \"email\": \"kevin@gmail.com\",\n        \"username\": \"kevinryan\",\n        \"password\": \"kev02937@\",\n        \"name\": {\n            \"firstname\": \"kevin\",\n            \"lastname\": \"ryan\"\n        },\n        \"phone\": \"1-567-094-1345\",\n        \"__v\": 0\n    },\n    {\n        \"address\": {\n            \"geolocation\": {\n                \"lat\": \"-37.3159\",\n                \"long\": \"81.1496\"\n            },\n            \"city\": \"kilcoole\",\n            \"street\": \"Lovers Ln\",\n            \"number\": 7267,\n            \"zipcode\": \"12926-3874\"\n        },\n        \"id\": 2,\n        \"email\": \"morrison@gmail.com\",\n        \"username\": \"mor_2314\",\n        \"password\": \"83r5^_\",\n        \"name\": {\n            \"firstname\": \"david\",\n            \"lastname\": \"morrison\"\n        },\n        \"phone\": \"1-570-236-7033\",\n        \"__v\": 0\n    },\n    {\n        \"address\": {\n            \"geolocation\": {\n                \"lat\": \"-37.3159\",\n                \"long\": \"81.1496\"\n            },\n            \"city\": \"kilcoole\",\n            \"street\": \"new road\",\n            \"number\": 7682,\n            \"zipcode\": \"12926-3874\"\n        },\n        \"id\": 1,\n        \"email\": \"john@gmail.com\",\n        \"username\": \"johnd\",\n        \"password\": \"m38rmF$\",\n        \"name\": {\n            \"firstname\": \"john\",\n            \"lastname\": \"doe\"\n        },\n        \"phone\": \"1-570-236-7033\",\n        \"__v\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "New user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(200)\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"jere@gmail.com\",\r\n    \"username\":\"jere123\",\r\n    \"password\":\"asdfas$\",\r\n    \"name\":{\r\n        \"firstname\":\"Jeremias\",\r\n        \"lastname\":\"Ezequiel\"\r\n    },\r\n    \"address\":{\r\n        \"city\":\"varela\",\r\n        \"street\":\"432\",\r\n        \"number\":3,\r\n        \"zipcode\":\"12926-3874\",\r\n        \"geolocation\":{\r\n            \"lat\": \"-37.3159\",\r\n            \"long\":\"81.1496\"\r\n        }\r\n    },\r\n    \"phone\":\"1-570-236-7033\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/users",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"jere@gmail.com\",\r\n    \"username\":\"jere123\",\r\n    \"password\":\"asdfas$\",\r\n    \"name\":{\r\n        \"firstname\":\"Jeremias\",\r\n        \"lastname\":\"Ezequiel\"\r\n    },\r\n    \"address\":{\r\n        \"city\":\"varela\",\r\n        \"street\":\"432\",\r\n        \"number\":3,\r\n        \"zipcode\":\"12926-3874\",\r\n        \"geolocation\":{\r\n            \"lat\": \"-37.3159\",\r\n            \"long\":\"81.1496\"\r\n        }\r\n    },\r\n    \"phone\":\"1-570-236-7033\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/users",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:16:18 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "9"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"9-hVv0cNJophUD7CGn+ZqXp8tVGo0\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=l474UE2A8jALmbyF1R14WeM4JHWf%2FuvB%2BUrBSv9yEgQ4hYLkx3v3r6gUn%2F25taZiXry7tQhG0F2MdTUm2oYRfMYozhguxfymtRhttHDlqgV7o1JfqyOgZnIYMKb4O1KsS88s\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a373c87f287fd9-IAD"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=1905&min_rtt=1627&rtt_var=628&sent=8&recv=8&lost=0&retrans=0&sent_bytes=2548&recv_bytes=1720&delivery_rate=2302066&cwnd=254&unsent_bytes=0&cid=012e6477f18830ed&ts=4921&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 11\n}"
+						}
+					]
+				},
+				{
+					"name": "Update a user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"jere@gmail.com\",\r\n    \"username\":\"jere123\",\r\n    \"password\":\"asdfas$\",\r\n    \"name\":{\r\n        \"firstname\":\"Jeremias\",\r\n        \"lastname\":\"Ezequiel\"\r\n    },\r\n    \"address\":{\r\n        \"city\":\"varela\",\r\n        \"street\":\"432\",\r\n        \"number\":3,\r\n        \"zipcode\":\"12926-3874\",\r\n        \"geolocation\":{\r\n            \"lat\": \"-37.3159\",\r\n            \"long\":\"81.1496\"\r\n        }\r\n    },\r\n    \"phone\":\"1-570-236-7033\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/users/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update a user",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"jere@gmail.com\",\r\n    \"username\":\"jere123\",\r\n    \"password\":\"asdfas$\",\r\n    \"name\":{\r\n        \"firstname\":\"Jeremias\",\r\n        \"lastname\":\"Ezequiel\"\r\n    },\r\n    \"address\":{\r\n        \"city\":\"varela\",\r\n        \"street\":\"432\",\r\n        \"number\":3,\r\n        \"zipcode\":\"12926-3874\",\r\n        \"geolocation\":{\r\n            \"lat\": \"-37.3159\",\r\n            \"long\":\"81.1496\"\r\n        }\r\n    },\r\n    \"phone\":\"1-570-236-7033\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/users/1",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"users",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:16:22 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"112-9kb3mOafSndrgLUB2EkoR4p6EtY\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=Zh2qlQ6uYQ%2B2xD5gttAvzFS%2BYYAEuf4fEF4%2BHnUzNbtEXGPvSdgPoLxsxbzvZ98yox0X46OhsW46RaP6iHKPHDhao%2FBkH0b8REn1dptLhas56H%2BsjZQwHXjlFI%2Bm3v7mSqEu\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a373e118607fd9-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=6893&min_rtt=1627&rtt_var=10446&sent=10&recv=10&lost=0&retrans=0&sent_bytes=3465&recv_bytes=2463&delivery_rate=2302066&cwnd=255&unsent_bytes=0&cid=012e6477f18830ed&ts=8667&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"email\": \"jere@gmail.com\",\n    \"username\": \"jere123\",\n    \"password\": \"asdfas$\",\n    \"name\": {\n        \"firstname\": \"Jeremias\",\n        \"lastname\": \"Ezequiel\"\n    },\n    \"address\": {\n        \"city\": \"varela\",\n        \"street\": \"432\",\n        \"number\": 3,\n        \"zipcode\": \"12926-3874\",\n        \"geolocation\": {\n            \"lat\": \"-37.3159\",\n            \"long\": \"81.1496\"\n        }\n    },\n    \"phone\": \"1-570-236-7033\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update a partial user",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"jere@gmail.com\",\r\n    \"username\":\"jere123\",\r\n    \"password\":\"asdfas$\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/users/2",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update a partial user",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"jere@gmail.com\",\r\n    \"username\":\"jere123\",\r\n    \"password\":\"asdfas$\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/users/2",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"users",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:16:26 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"44-te/l39JjZ94r5+YN6ZdhpnTrr48\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=%2B57AEsqFWis%2BYvUWH%2BLIMtFvgC3fotfo86FVwR45IIImhAV15zz54z5wE%2FgI4OwjQZ3CY6OLGT4wz%2B1g%2F2E4nczPbw4JGI7o6k4Lb%2Flq3sr9F4nv43sLMt9G0ITc1kmCotLV\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a373fc2e2ad6cc-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=2311&min_rtt=2182&rtt_var=910&sent=3&recv=5&lost=0&retrans=0&sent_bytes=219&recv_bytes=1112&delivery_rate=663611&cwnd=250&unsent_bytes=0&cid=27618e5d9cc8faa5&ts=128&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"email\": \"jere@gmail.com\",\n    \"username\": \"jere123\",\n    \"password\": \"asdfas$\"\n}"
+						}
+					]
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/users/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/users/1",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"users",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:16:32 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"120-HNMhv14aQeBJetA9fBvavCZ+gdk\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=a4Vkh4ahMxFKGpboTDY91kK2s%2FoYuZEwMOzhv0WENsXlARqKs8nsgSx9WmuuE11y%2BTLRCeBke9ksc%2FVNxDknlC5IM0wkcc0qku8aLaTEPpd1DyOgNLRI1vZPqIcrIdm6dpXA\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "90a374206aab38ac-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=2820&min_rtt=2582&rtt_var=1139&sent=3&recv=5&lost=0&retrans=0&sent_bytes=219&recv_bytes=973&delivery_rate=560805&cwnd=246&unsent_bytes=0&cid=f6c286807b87abb6&ts=217&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"address\": {\n        \"geolocation\": {\n            \"lat\": \"-37.3159\",\n            \"long\": \"81.1496\"\n        },\n        \"city\": \"kilcoole\",\n        \"street\": \"new road\",\n        \"number\": 7682,\n        \"zipcode\": \"12926-3874\"\n    },\n    \"id\": 1,\n    \"email\": \"john@gmail.com\",\n    \"username\": \"johnd\",\n    \"password\": \"m38rmF$\",\n    \"name\": {\n        \"firstname\": \"john\",\n        \"lastname\": \"doe\"\n    },\n    \"phone\": \"1-570-236-7033\",\n    \"__v\": 0\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "User Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    let responseJson = pm.response.json(); \r",
+									"\r",
+									"    pm.expect(responseJson).to.have.property('token');\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"mor_2314\",\r\n    \"password\" : \"83r5^_\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "https://fakestoreapi.com",
+			"type": "default"
+		},
+		{
+			"key": "password",
+			"value": "83r5^_",
+			"type": "default"
+		}
+	]
+}
