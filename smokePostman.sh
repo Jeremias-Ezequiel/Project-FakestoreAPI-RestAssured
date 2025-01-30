@@ -1,0 +1,1 @@
+newman run src/test/resources/postman/FakestoreAPI.postman_collection.json
