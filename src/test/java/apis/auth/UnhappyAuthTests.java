@@ -9,7 +9,7 @@ import utilities.ResponseManager;
 public class UnhappyAuthTests extends BaseTest{
     AuthRequest authRequest = new AuthRequest(); 
 
-    @Test
+    @Test(groups = {"regression","smoke"})
     public void emptyCredentialsTest(){
         String pathCredentials = "src/test/resources/requestBody/emptyCredentials.json"; 
 
@@ -19,7 +19,7 @@ public class UnhappyAuthTests extends BaseTest{
         ResponseManager.verifyStatusCode(400);
     }
 
-    @Test
+    @Test(groups = {"regression","smoke"})
     public void invalidCredentialsTest(){
         String pathCredentials = "src/test/resources/requestBody/invalidCredentials.json";
 

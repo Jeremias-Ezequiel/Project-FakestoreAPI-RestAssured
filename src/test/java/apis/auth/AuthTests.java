@@ -13,7 +13,7 @@ import utilities.ResponseManager;
 public class AuthTests extends BaseTest{
     private AuthRequest authRequest = new AuthRequest(); 
 
-    @Test
+    @Test(groups = {"regression","smoke"})
     public void loginTest(){
         final String path = "src/test/resources/requestBody/login.json"; 
         authRequest.login(path);

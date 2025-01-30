@@ -3,7 +3,6 @@ package apis.products;
 import java.util.Map;
 
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 import models.product.Product;
 import models.product.ProductResponse;
@@ -14,7 +13,7 @@ import utilities.ResponseManager;
 public class ProductsTests extends BaseTest {
     final ProductsRequest productsRequest = new ProductsRequest(); 
 
-    @Test
+    @Test(groups = {"regression","smoke"})
     public void getAllProductsTest(){
         productsRequest.getProducts(); 
         
@@ -22,7 +21,7 @@ public class ProductsTests extends BaseTest {
         ResponseManager.verifyStatusCode(200);
     }
     
-    @Test
+    @Test(groups = {"regression","smoke"})
     public void getSingleProducTest(){
         String pathSchema = "src/test/resources/schemas/ProductSchema.json";
         productsRequest.singleProduct(1);
@@ -43,7 +42,7 @@ public class ProductsTests extends BaseTest {
         ResponseManager.verifyStatusCode(200);
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void sortResultsTest(){
         final Map<String,String> queryMap = Map.of(
             "sort","desc"
@@ -54,7 +53,7 @@ public class ProductsTests extends BaseTest {
         ResponseManager.verifyStatusCode(200);
     }
 
-    @Test
+    @Test(groups = {"regression","smoke"})
     public void getAllCategoriesTest(){
         productsRequest.getAllCategories(); 
         
@@ -62,7 +61,7 @@ public class ProductsTests extends BaseTest {
         ResponseManager.verifyStatusCode(200);
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void getSpecificCategoryTest(){
         productsRequest.getProductsInCategory("jewerly");   
 
@@ -70,7 +69,7 @@ public class ProductsTests extends BaseTest {
         ResponseManager.verifyStatusCode(200);
     }
 
-    @Test
+    @Test(groups = {"regression","smoke"})
     public void addNewProducTest(){
         final Product newProduct = Product.generateProduct(); 
         productsRequest.addProduct(newProduct);
