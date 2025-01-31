@@ -3,9 +3,10 @@
 Automation framework for testing the [FakeStoreAPI](https://fakestoreapi.com/).  
 Include full test coverage with schema validation and reporting.
 
-![RestAssured](https://img.shields.io/badge/RestAssured-4.5.1-green)
-![Postman](https://img.shields.io/badge/Postman-Smoke_Test-orange)
-![GitHub Actions](https://img.shields.io/github/actions/workflow/status/tu-usuario/repo/main.yml?label=CI/CD)
+[![RestAssured](https://img.shields.io/badge/Rest_Assured-4.5.1-FF5733?logo=restassured&logoColor=white)](https://rest-assured.io)
+[![Postman](https://img.shields.io/badge/Postman-Smoke_Test-FF6C37?logo=postman&logoColor=white)](https://postman.com)
+[![Java](https://img.shields.io/badge/Java_17☕-orange)](https://java.com)
+[![TestNG](https://img.shields.io/badge/TestNG-7.8.0-00AA00?logo=testng&logoColor=white)](https://testng.org)
 
 ## 📌 Key Features
 - **Full Coverage**: Critical Endpoints

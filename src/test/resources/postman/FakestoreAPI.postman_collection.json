@@ -38,12 +38,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/products",
+							"raw": "{{BASE_URL}}/{{products_edpoint}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"products"
+								"{{products_edpoint}}"
 							]
 						}
 					},
@@ -168,13 +168,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/products/1",
+							"raw": "{{BASE_URL}}/{{products_edpoint}}/{{product}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"products",
-								"1"
+								"{{products_edpoint}}",
+								"{{product}}"
 							]
 						}
 					},
@@ -291,17 +291,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/products?limit=5",
+							"raw": "{{BASE_URL}}/{{products_edpoint}}?limit={{limit}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"products"
+								"{{products_edpoint}}"
 							],
 							"query": [
 								{
 									"key": "limit",
-									"value": "5"
+									"value": "{{limit}}"
 								}
 							]
 						}
@@ -433,17 +433,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/products?sort=desc",
+							"raw": "{{BASE_URL}}/{{products_edpoint}}?sort={{sort}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"products"
+								"{{products_edpoint}}"
 							],
 							"query": [
 								{
 									"key": "sort",
-									"value": "desc"
+									"value": "{{sort}}"
 								}
 							]
 						}
@@ -571,13 +571,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/products/categories",
+							"raw": "{{BASE_URL}}/{{categories_endpoint}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"products",
-								"categories"
+								"{{categories_endpoint}}"
 							]
 						}
 					},
@@ -697,14 +696,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/products/category/jewelery",
+							"raw": "{{BASE_URL}}/{{category_endpoint}}/{{category}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"products",
-								"category",
-								"jewelery"
+								"{{category_endpoint}}",
+								"{{category}}"
 							]
 						}
 					},
@@ -832,12 +830,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/products",
+							"raw": "{{BASE_URL}}/{{products_edpoint}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"products"
+								"{{products_edpoint}}"
 							]
 						}
 					},
@@ -965,13 +963,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/products/21",
+							"raw": "{{BASE_URL}}/{{products_edpoint}}/{{product}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"products",
-								"21"
+								"{{products_edpoint}}",
+								"{{product}}"
 							]
 						}
 					},
@@ -1100,13 +1098,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/products/2",
+							"raw": "{{BASE_URL}}/{{products_edpoint}}/{{product}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"products",
-								"2"
+								"{{products_edpoint}}",
+								"{{product}}"
 							]
 						}
 					},
@@ -1226,13 +1224,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/products/1",
+							"raw": "{{BASE_URL}}/{{products_edpoint}}/{{product}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"products",
-								"1"
+								"{{products_edpoint}}",
+								"{{product}}"
 							]
 						}
 					},
@@ -1330,16 +1328,39 @@
 			"item": [
 				{
 					"name": "All Carts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that all elements are id above cero\",function(){\r",
+									"    let responseJson = pm.response.json(); \r",
+									"    pm.expect(responseJson).to.be.an(\"array\");\r",
+									"\r",
+									"    responseJson.forEach((data) => {\r",
+									"        pm.expect(data.id).to.be.above(0);\r",
+									"    })\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/carts",
+							"raw": "{{BASE_URL}}/{{carts_endpoint}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"carts"
+								"{{carts_endpoint}}"
 							]
 						}
 					},
@@ -1431,17 +1452,33 @@
 				},
 				{
 					"name": "Single cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/carts/2",
+							"raw": "{{BASE_URL}}/{{carts_endpoint}}/{{cartId}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"carts",
-								"2"
+								"{{carts_endpoint}}",
+								"{{cartId}}"
 							]
 						}
 					},
@@ -1538,17 +1575,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/carts?limit=2",
+							"raw": "{{BASE_URL}}/{{carts_endpoint}}?limit={{limit}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"carts"
+								"{{carts_endpoint}}"
 							],
 							"query": [
 								{
 									"key": "limit",
-									"value": "2"
+									"value": "{{limit}}"
 								}
 							]
 						}
@@ -1647,21 +1684,51 @@
 				},
 				{
 					"name": "Sort results",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that the sort of elements are correct\",function (){\r",
+									"    let responseJson = pm.response.json(); \r",
+									"    pm.expect(responseJson).to.be.an(\"array\"); \r",
+									"\r",
+									"    let sorted = true; \r",
+									"\r",
+									"    for(let i = 0; i < responseJson.length - 1; i++){\r",
+									"        if(responseJson[i+1].id > responseJson[i].id){\r",
+									"            sorted = false; \r",
+									"            break; \r",
+									"        }\r",
+									"    }\r",
+									"\r",
+									"    pm.expect(sorted).to.be.true; \r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/carts?sort=desc",
+							"raw": "{{BASE_URL}}/{{carts_endpoint}}?sort={{sort}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"carts"
+								"{{carts_endpoint}}"
 							],
 							"query": [
 								{
 									"key": "sort",
-									"value": "desc"
+									"value": "{{sort}}"
 								}
 							]
 						}
@@ -1748,25 +1815,39 @@
 				},
 				{
 					"name": "Carts in a date range",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/carts?startdate=2019-12-10&enddate=2020-10-10",
+							"raw": "{{BASE_URL}}/{{carts_endpoint}}?startdate={{startDate}}&enddate={{endDate}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"carts"
+								"{{carts_endpoint}}"
 							],
 							"query": [
 								{
 									"key": "startdate",
-									"value": "2019-12-10"
+									"value": "{{startDate}}"
 								},
 								{
 									"key": "enddate",
-									"value": "2020-10-10"
+									"value": "{{endDate}}"
 								}
 							]
 						}
@@ -1869,18 +1950,46 @@
 				},
 				{
 					"name": "User carts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify taht userId matches path parameter\",function() {\r",
+									"    let responseJson = pm.response.json(); \r",
+									"\r",
+									"    pm.expect(responseJson).to.be.an(\"array\").that.is.not.empty; \r",
+									"\r",
+									"    // Get the las path param\r",
+									"    let userIdPath = pm.request.url.path[pm.request.url.path.length - 1]; \r",
+									"\r",
+									"    userIdPath = Number (userIdPath); \r",
+									"\r",
+									"    responseJson.forEach((data) => {\r",
+									"        pm.expect(data).to.have.property(\"userId\",userIdPath);\r",
+									"    })\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/carts/user/3",
+							"raw": "{{BASE_URL}}/{{carts_user}}/{{userId}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"carts",
-								"user",
-								"3"
+								"{{carts_user}}",
+								"{{userId}}"
 							]
 						}
 					},
@@ -1962,6 +2071,25 @@
 				},
 				{
 					"name": "New product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that the id generated is above zero\",function(){\r",
+									"    let responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.id).to.be.above(0)\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -1975,12 +2103,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/carts",
+							"raw": "{{BASE_URL}}/{{carts_endpoint}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"carts"
+								"{{carts_endpoint}}"
 							]
 						}
 					},
@@ -2081,6 +2209,30 @@
 				},
 				{
 					"name": "Update a cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that the id matches path param\",function(){\r",
+									"    let responseJson = pm.response.json(); \r",
+									"\r",
+									"    let pathParam = pm.request.url.path[pm.request.url.path.length - 1]; \r",
+									"\r",
+									"    pathParam = Number (pathParam); \r",
+									"\r",
+									"    pm.expect(responseJson.id).to.be.equal(pathParam);\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -2094,13 +2246,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/carts/7",
+							"raw": "{{BASE_URL}}/{{carts_endpoint}}/{{cartId}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"carts",
-								"7"
+								"{{carts_endpoint}}",
+								"{{cartId}}"
 							]
 						}
 					},
@@ -2202,6 +2354,30 @@
 				},
 				{
 					"name": "Update a partial cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that the id matches path param\",function(){\r",
+									"    let responseJson = pm.responses.json(); \r",
+									"\r",
+									"    let pathParam = pm.request.url.path[pm.request.url.path.length - 1]; \r",
+									"\r",
+									"    pathParam = Number (pathParam); \r",
+									"\r",
+									"    pm.expect(responseJson.id).to.be.equal(pathParam);\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -2215,13 +2391,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/carts/7",
+							"raw": "{{BASE_URL}}/{{carts_endpoint}}/{{cartId}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"carts",
-								"7"
+								"{{carts_endpoint}}",
+								"{{cartId}}"
 							]
 						}
 					},
@@ -2319,17 +2495,41 @@
 				},
 				{
 					"name": "Delete single cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that the id matches path param\",function(){\r",
+									"    let responseJson = pm.response.json(); \r",
+									"\r",
+									"    let pathParam = pm.request.url.path[pm.request.url.path.length - 1]; \r",
+									"\r",
+									"    pathParam = Number (pathParam); \r",
+									"\r",
+									"    pm.expect(responseJson.id).to.be.equal(pathParam);\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/carts/7",
+							"raw": "{{BASE_URL}}/{{carts_endpoint}}/{{cartId}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"carts",
-								"7"
+								"{{carts_endpoint}}",
+								"{{cartId}}"
 							]
 						}
 					},
@@ -2427,16 +2627,36 @@
 			"item": [
 				{
 					"name": "All users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that the respose are elements\",function(){\r",
+									"    let responseJSON = pm.response.json(); \r",
+									"    pm.expect(responseJSON).to.be.an(\"array\").that.is.not.empty;\r",
+									"\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/users",
+							"raw": "{{BASE_URL}}/{{users_endpoint}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"users"
+								"{{users_endpoint}}"
 							]
 						}
 					},
@@ -2528,17 +2748,41 @@
 				},
 				{
 					"name": "Single user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that the id matches path param\",function(){\r",
+									"    let responseJSON = pm.response.json(); \r",
+									"    \r",
+									"    let pathParam = pm.request.url.path[pm.request.url.path.length - 1]; \r",
+									"\r",
+									"    pathParam = Number(pathParam); \r",
+									"\r",
+									"    pm.expect(responseJSON.id).to.be.equal(pathParam);\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/users/2",
+							"raw": "{{BASE_URL}}/{{users_endpoint}}/{{userId}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"users",
-								"2"
+								"{{users_endpoint}}",
+								"{{userId}}"
 							]
 						}
 					},
@@ -2631,21 +2875,46 @@
 				},
 				{
 					"name": "Limit results",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that the elements in the array matches path param\", function () {\r",
+									"     let responseJSON = pm.response.json();\r",
+									"     pm.expect(responseJSON).to.be.an('array');\r",
+									"\r",
+									"     let queryParam = pm.request.url.query.get(\"limit\"); \r",
+									"\r",
+									"     queryParam = Number(queryParam); \r",
+									"\r",
+									"     pm.expect(responseJSON.length).to.be.equal(queryParam);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/users?limit=3",
+							"raw": "{{BASE_URL}}/{{users_endpoint}}?limit={{limit}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"users"
+								"{{users_endpoint}}"
 							],
 							"query": [
 								{
 									"key": "limit",
-									"value": "3"
+									"value": "{{limit}}"
 								}
 							]
 						}
@@ -2744,21 +3013,52 @@
 				},
 				{
 					"name": "Sort results",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that the sort is correctly\",function(){\r",
+									"    let responseJSON = pm.response.json(); \r",
+									"    pm.expect(responseJSON).to.be.an(\"array\"); \r",
+									"\r",
+									"    let sorted = true; \r",
+									"\r",
+									"    for(let i = 0; i < responseJSON.length - 1; i++){\r",
+									"        if(responseJSON[i+1].id > responseJSON[i].id){\r",
+									"            sorted = false; \r",
+									"            break;\r",
+									"        }\r",
+									"    }\r",
+									"\r",
+									"    pm.expect(sorted).to.be.true; \r",
+									"\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/users?sort=desc",
+							"raw": "{{BASE_URL}}/{{users_endpoint}}?sort={{sort}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"users"
+								"{{users_endpoint}}"
 							],
 							"query": [
 								{
 									"key": "sort",
-									"value": "desc"
+									"value": "{{sort}}"
 								}
 							]
 						}
@@ -2884,12 +3184,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/users",
+							"raw": "{{BASE_URL}}/{{users_endpoint}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"users"
+								"{{users_endpoint}}"
 							]
 						}
 					},
@@ -2999,13 +3299,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/users/1",
+							"raw": "{{BASE_URL}}/{{users_endpoint}}/{{userId}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"users",
-								"1"
+								"{{users_endpoint}}",
+								"{{userId}}"
 							]
 						}
 					},
@@ -3120,13 +3420,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/users/2",
+							"raw": "{{BASE_URL}}/{{users_endpoint}}/{{userId}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"users",
-								"2"
+								"{{users_endpoint}}",
+								"{{userId}}"
 							]
 						}
 					},
@@ -3228,17 +3528,42 @@
 				},
 				{
 					"name": "New Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that the response contain the path param\",function(){\r",
+									"    let responseJSON = pm.response.json();\r",
+									"\r",
+									"    let pathParam = pm.request.url.path.slice(-1)[0]; \r",
+									"\r",
+									"    pathParam = Number(pathParam); \r",
+									"\r",
+									"    pm.expect(responseJSON.id).to.be.equal(pathParam);\r",
+									"\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/users/1",
+							"raw": "{{BASE_URL}}/{{users_endpoint}}/{{userId}}",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"users",
-								"1"
+								"{{users_endpoint}}",
+								"{{userId}}"
 							]
 						}
 					},
@@ -3411,6 +3736,76 @@
 		{
 			"key": "password",
 			"value": "83r5^_",
+			"type": "default"
+		},
+		{
+			"key": "products_edpoint",
+			"value": "products",
+			"type": "default"
+		},
+		{
+			"key": "categories_endpoint",
+			"value": "products/categories",
+			"type": "default"
+		},
+		{
+			"key": "category_endpoint",
+			"value": "products/category",
+			"type": "default"
+		},
+		{
+			"key": "category",
+			"value": "jewelery",
+			"type": "default"
+		},
+		{
+			"key": "sort",
+			"value": "desc",
+			"type": "default"
+		},
+		{
+			"key": "limit",
+			"value": "5",
+			"type": "default"
+		},
+		{
+			"key": "product",
+			"value": "1",
+			"type": "default"
+		},
+		{
+			"key": "carts_endpoint",
+			"value": "carts",
+			"type": "default"
+		},
+		{
+			"key": "cartId",
+			"value": "2",
+			"type": "default"
+		},
+		{
+			"key": "startDate",
+			"value": "2019-12-10",
+			"type": "default"
+		},
+		{
+			"key": "endDate",
+			"value": "2020-10-10",
+			"type": "default"
+		},
+		{
+			"key": "carts_user",
+			"value": "carts/user",
+			"type": "default"
+		},
+		{
+			"key": "userId",
+			"value": "3",
+			"type": "default"
+		},
+		{
+			"key": "users_endpoint",
+			"value": "users",
 			"type": "default"
 		}
 	]
