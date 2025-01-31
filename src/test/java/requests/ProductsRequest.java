@@ -98,8 +98,8 @@ public class ProductsRequest extends BaseRequest{
         Logs.info("(PUT) Update a product");
 
         final Response response = getRequest()
-            .basePath("products/{index}")
-            .queryParam("index", id)
+            .basePath("products/{id}")
+            .pathParam("id", id)
             .body(product)
             .request(Method.PUT); 
 
