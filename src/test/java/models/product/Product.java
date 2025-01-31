@@ -8,7 +8,8 @@ public record Product(
     @JsonProperty("price") double price,
     @JsonProperty("category") String category, 
     @JsonProperty("description") String description, 
-    @JsonProperty("image") String image 
+    @JsonProperty("image") String image,
+    @JsonProperty("rating") RatingProduct rating
 ) {
     public static Product generateProduct(){
         Faker faker = new Faker(); 
@@ -17,8 +18,9 @@ public record Product(
         final double price = faker.number().randomDouble(2, 5, 20); 
         final String category = faker.commerce().department(); 
         final String description = faker.lorem().paragraph(2); 
-        final String image = "https://i.pravatar.cc/"; 
+        final String image = "https://i.pravatar.cc/";
+        final RatingProduct rating = RatingProduct.generateRating(); 
 
-        return new Product(title, price, category, description, image); 
+        return new Product(title, price, category, description, image,rating); 
     }
 }

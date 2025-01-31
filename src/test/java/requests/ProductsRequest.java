@@ -75,7 +75,7 @@ public class ProductsRequest extends BaseRequest{
 
         final Response response = getRequest()
             .basePath("products/category/{categori}")
-            .queryParam("categori", category)
+            .pathParam("categori", category)
             .request(Method.GET);
 
         ResponseManager.setResponse(response);

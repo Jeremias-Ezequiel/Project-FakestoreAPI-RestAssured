@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import models.product.PartialProduct;
 import models.product.Product;
 import models.product.ProductGetResponse;
-import models.product.ProductPostResponse;
+import models.product.ProductResponse;
 import requests.ProductsRequest;
 import utilities.BaseTest;
 import utilities.Logs;
@@ -27,7 +27,7 @@ public class ProductsTests extends BaseTest {
     
     @Test(groups = {"regression","smoke"})
     public void getSingleProducTest(){
-        String pathSchema = "src/test/resources/schemas/ProductSchema.json";
+        String pathSchema = "src/test/resources/schemas/productSchemas/ProductGetSchema.json";
         productsRequest.singleProduct(1);
         final ProductGetResponse response = ResponseManager.getResponseBody(ProductGetResponse.class); 
 
@@ -71,28 +71,42 @@ public class ProductsTests extends BaseTest {
         productsRequest.getAllCategories(); 
         
         // ResponseManager.verifyResponseTime(1000);
-        ResponseManager.verifyStatusCode(200);
+        ResponseManager.verifyStatusCode(200); 
     }
 
     @Test(groups = {"regression"})
     public void getSpecificCategoryTest(){
-        productsRequest.getProductsInCategory("jewerly");   
+        final String category = "jewerly"; 
+        productsRequest.getProductsInCategory(category);   
 
         // ResponseManager.verifyResponseTime(1000);
         ResponseManager.verifyStatusCode(200);
+
+        final List<ProductGetResponse> responseBody = ResponseManager.getResponseBodyAsList(); 
+
+        int size = responseBody.size() > 5 ? 5 : responseBody.size(); 
+
+        for(int i = 0; i < size; i++){
+            softAssert.assertEquals(responseBody.get(i).category(),category);
+        }
+
+        softAssert.assertAll();
     }
 
     @Test(groups = {"regression","smoke"})
     public void addNewProducTest(){
+        String pathSchema = "src/test/resources/schemas/productSchemas/POSTProductSchema.json";
         final Product newProduct = Product.generateProduct(); 
         productsRequest.addProduct(newProduct);
 
         // ResponseManager.verifyResponseTime(1000);
         ResponseManager.verifyStatusCode(200); 
 
-        final ProductPostResponse responseBody = ResponseManager.getResponseBody(ProductPostResponse.class); 
+        final ProductResponse responseBody = ResponseManager.getResponseBody(ProductResponse.class); 
 
+        ResponseManager.doSchemaValidation(pathSchema);
         softAssert.assertTrue(responseBody.id() > 0);
+        
     }
 
     @Test(groups = {"regression","smoke"})
