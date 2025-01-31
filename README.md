@@ -1,88 +1,87 @@
 # 🚀 Automation Framework - FakeStoreAPI
 
-Framework de automatización para pruebas de la API [FakeStoreAPI](https://fakestoreapi.com/).  
-Incluye test completo, schema validation y reporting.
+Automation framework for testing the [FakeStoreAPI](https://fakestoreapi.com/).  
+Include full test coverage with schema validation and reporting.
 
 ![RestAssured](https://img.shields.io/badge/RestAssured-4.5.1-green)
 ![Postman](https://img.shields.io/badge/Postman-Smoke_Test-orange)
 ![GitHub Actions](https://img.shields.io/github/actions/workflow/status/tu-usuario/repo/main.yml?label=CI/CD)
 
-## 📌 Características Clave
-- **Cobertura Completa**: Endpoints principales + edge cases
-- **Validación Estricta**: Schema validation
+## 📌 Key Features
+- **Full Coverage**: Critical Endpoints
+- **Strict Validation**: Schema validation
 - **Reporting**: Allure Reports
-- **Smoke Test Rápido**: Colección Postman lista para ejecución
+- **Quick Smoke Test**: Ready to run Postman collection
 
-## 🛠️ Stack Tecnológico
-| Tecnología          | Uso                            |
+## 🛠️ Technology Stack
+| Technology          | Purpose                        |
 |---------------------|--------------------------------|
-| Java                | Lenguaje base                  | 
-| RestAssured         | Cliente HTTP + Validaciones    |
+| Java                | Core Language                  | 
+| RestAssured         | HTTP Client + Validations      |
 | TestNG              | Test Runner + Assertions       |
 | Allure              | Report Generation              |
-| Jackson             | Serialización/Deserialización  |
-| Java Faker          | Datos Aleatorios               |
+| Jackson             | Serialization/Deserialization  |
+| Java Faker          | Test Data Generation           |
 
-## 🗂️ Estructura del Proyecto
+## 🗂️ Project Structure
 ```plaintext
 src/
 ├── test/
     ├── java/
-    |    ├── api/                # API Tests
+    |    ├── api/                # API Test Implementations
     |    ├── listeners           # Suite and Test listeners
-    |    ├── models              # DTOs para requests/responses
-    |    └── requests            # Request especificas de cada endpoint
+    |    ├── models              # Request/Response DTOs
+    |    └── requests            # Endpoint-Specific Request Builders
     |    
     └── resources
-        ├── requestBody
-        └── Schemas
+        ├── requestBody          # Sample Request Bodies
+        ├── Postman              # Postman collection files
+        └── Schemas              # JSON Schema Definitions
 ```
 
-## Smoke Test con Postman
+## Postman Smoke Test
 
-Coleccion: [Fakestore Collection](src/test/resources/postman/FakestoreAPI.postman_collection.json)
+**Collection**: [Fakestore Collection](src/test/resources/postman/FakestoreAPI.postman_collection.json)
 
-**Qué valida:**
+**Validation Scope:**
 
-✅ Status Codes criticos
+✅ Critical Status Code
 
-✅ Respuestas básicas
+✅ Basic Response Structure Validation
 
-✅ Tiempos de respuesta promedio
+✅ Average Response time 
 
-**Cómo ejecutar:**
+**Execution Methods:**
 
-*Por terminal:* 
+*Via Terminal:* 
 
-1. Instalar Newman
+1. Instalar Newman globally
 ``` bash
 npm install -g newman
 ```
 
-2. Copiar el path del archivo
-
-3. Ejecutar el siguiente comando
+2. Run collection with:
 ```bash
-newman run path/del/archivo.json
+newman run src/test/resources/postman/FakestoreAPI.postman_collection.json
 ```
 
-*Por Shell Script:*
+*Via Shell Script:*
 
-1. Darle permisos
+1. Make script executable
 ```bash
 chmod +x smokePostman.sh
 ```
 
-2. Ejecutar el archivo Shell Script
+2. Execute tests
 ```bash
 ./smokePostman.sh
 ```
 
-## 🧪 **Test Automation con RestAssured**  
+## 🧪 **Test Automation with Rest Assured**  
 
-## **Estrategia de Automatización**
+## **Automation Strategy**
 
-- **Cobertura de Endpoints:**
+- **Covered Endpoints:**
     - ✅ Login: `GET /auth/login`
     - ✅ Products: `GET /products`, `GET /products/{id}`, `GET /products/categories`, `GET /products/category/{category}`, `POST /products`, `PUT /products/{id}`, `PATCH /products/{id}`, `DELETE /products/{id}`
     - ✅ Cart: `GET /carts`, `GET /carts/{id}`, `GET /carts/user/{id}`, `POST /carts`, `PUT /products/{id}`,
@@ -90,21 +89,21 @@ chmod +x smokePostman.sh
     - ✅ User: `GET /users`, `GET /users/{id}`, `POST /users`, `PUT /users/{id}`, `PATCH /users/{id}`, `DELETE /users/{id}`
 ---
 
-- **Tipos de pruebas:**
-    - **Happy Path**: Flujos exitosos con datos válidos. 
-    - **Unhappy Path**: Validacion de errores (400,401,403,404).
-    - **Schema Validation**: Verificacion de estructuras JSON con JSON Schema.
+- **Test Types:**
+    - **Happy Path**: Valid request with positive scenarios. 
+    - **Unhappy Path**: Error validation(400,401,403,404).
+    - **Schema Validation**: JSON structure verification using JSON Schema.
 
-## 🚀 Ejecución de Pruebas
+## 🚀 Test Execution
 
-### **Comandos Maven**
+### **Maven Commands**
 ```bash
-# Ejecutar suite completa (Regression + Smoke)
+# Run full test suite (Regression + Smoke)
 ./mvnw clean test
 
-# Ejecutar test smoke
+# Execute smoke tests only
 ./mvnw test -Dgroups="smoke"
 
-# Ejecutar test regression
+# Execute regression tests
 ./mvnw test -Dgroups="regression"
 ```
