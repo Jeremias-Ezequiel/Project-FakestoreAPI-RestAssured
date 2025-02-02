@@ -1,13 +1,6 @@
 pipeline{
     agent any 
 
-    environment{
-        GITHUB_REPO = 'https://github.com/Jeremias-Ezequiel/Project-FakestoreAPI-RestAssured.git'
-        GITHUB_PAGES_BRANCH = 'gh-pages'
-        ALLURE_RESULTS_DIR = 'target/allure-results'
-        ALLURE_REPORT_DIR = 'target/site/allure-maven-plugin'
-    }
-
     stages{
         stage('Build'){
             steps{
@@ -27,38 +20,6 @@ pipeline{
         stage('Generate Allure Report'){
             steps{
                 allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']] 
-            }
-        }
-        stage('Deploy to GitHub Pages') {
-            steps {
-                script {
-                    // Configurar Git
-                    sh '''
-                        git init
-                        git config --global user.email "jenkins@example.com"
-                        git config --global user.name "Jenkins"
-                    '''
-
-                    // Clonar la rama gh-pages
-                    sh '''
-                        git remote add origin ${GITHUB_REPO}
-                        git fetch origin ${GITHUB_PAGES_BRANCH}
-                        git checkout -b ${GITHUB_PAGES_BRANCH} || git checkout ${GITHUB_PAGES_BRANCH}
-                    '''
-
-                    // Copiar los archivos del reporte de Allure a la rama gh-pages
-                    sh '''
-                        rm -rf * # Limpiar el directorio actual
-                        cp -r ${ALLURE_REPORT_DIR}/* . # Copiar los archivos del reporte
-                    '''
-
-                    // Agregar, confirmar y subir los cambios
-                    sh '''
-                        git add .
-                        git commit -m "Update Allure report"
-                        git push origin gh-pages
-                    '''
-                }
             }
         }
     }
