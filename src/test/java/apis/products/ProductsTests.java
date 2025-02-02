@@ -11,7 +11,6 @@ import models.product.ProductGetResponse;
 import models.product.ProductResponse;
 import requests.ProductsRequest;
 import utilities.BaseTest;
-import utilities.Logs;
 import utilities.ResponseManager;
 
 public class ProductsTests extends BaseTest {
@@ -41,7 +40,7 @@ public class ProductsTests extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void getALimitOfResultsTest(){
         final Map<String,String> queryMap = Map.of(
             "limit","10"
@@ -85,11 +84,9 @@ public class ProductsTests extends BaseTest {
         final List<ProductGetResponse> responseBody = ResponseManager.getResponseBodyAsList(); 
 
         int size = responseBody.size() > 5 ? 5 : responseBody.size(); 
-
         for(int i = 0; i < size; i++){
             softAssert.assertEquals(responseBody.get(i).category(),category);
         }
-
         softAssert.assertAll();
     }
 
@@ -102,8 +99,7 @@ public class ProductsTests extends BaseTest {
         // ResponseManager.verifyResponseTime(1000);
         ResponseManager.verifyStatusCode(200); 
 
-        final ProductResponse responseBody = ResponseManager.getResponseBody(ProductResponse.class); 
-
+        final ProductResponse responseBody = ResponseManager.getResponseBody(ProductResponse.class);
         ResponseManager.doSchemaValidation(pathSchema);
         softAssert.assertTrue(responseBody.id() > 0);
         
@@ -117,26 +113,32 @@ public class ProductsTests extends BaseTest {
 
         // ResponseManager.verifyResponseTime(1000);
         ResponseManager.verifyStatusCode(200);
+
+        final ProductResponse responseBody = ResponseManager.getResponseBody(ProductResponse.class);
+        softAssert.assertEquals(responseBody.id(),idProduct);
     }
 
     @Test(groups = {"regression","smoke"})
     public void updatePartialProductTest(){
         final PartialProduct partialProduct = PartialProduct.generatePartialProduct(); 
         softAssert.assertTrue(partialProduct.isValid(),"The Partial Product must have at least one non-null field");
-        
+
         productsRequest.partialProduct(4, partialProduct);
 
         // ResponseManager.verifyResponseTime(1000);
         ResponseManager.verifyStatusCode(200);
-
         softAssert.assertAll();
     }
 
     @Test(groups = {"regression","smoke"})
     public void deleteProductTest(){
-        productsRequest.deleteProduct(3);
+        int index = 3;
+        productsRequest.deleteProduct(index);
 
         // ResponseManager.verifyResponseTime(1000);
         ResponseManager.verifyStatusCode(200);
+        
+        final ProductGetResponse responseBody = ResponseManager.getResponseBody(ProductGetResponse.class);
+        softAssert.assertEquals(responseBody.id(),index);
     }
 }
