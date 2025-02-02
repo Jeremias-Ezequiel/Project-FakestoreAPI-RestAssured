@@ -15,7 +15,7 @@ public class AuthTests extends BaseTest{
 
     @Test(groups = {"regression","smoke"})
     public void loginTest(){
-        final String path = "src/test/resources/requestBody/login.json"; 
+        final String path = "src/test/resources/requestBody/auth/login.json"; 
         authRequest.login(path);
 
         ResponseManager.verifyStatusCode(200);
