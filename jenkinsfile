@@ -9,7 +9,7 @@ pipeline{
         }
         stage('Postman Smoke Test'){
             steps{
-                bat './mvnw smokePostman.bat'
+                bat './smokePostman.bat'
             }
         }
         stage('Test'){
