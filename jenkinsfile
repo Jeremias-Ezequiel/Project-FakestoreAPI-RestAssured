@@ -1,6 +1,13 @@
 pipeline{
     agent any 
 
+    environment{
+        REPO = 'https://github.com/Jeremias-Ezequiel/Project-FakestoreAPI-RestAssured.git'
+        BRANCH = 'gh-pages'
+        ALLURE_DIR = 'allure-reports'
+        SITE_DIR = 'target/gh-pages'
+    }
+
     stages{
         stage('Build'){
             steps{
@@ -15,6 +22,27 @@ pipeline{
         stage('Generate Allure Report'){
             steps{
                 allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']] 
+                bat 'allure generate target/allure-results -o target/allure-report --clean'
+            }
+        }
+        stage('Deploy to GitHub Pages'){
+            steps{
+                withCredentials([usernamePassword(credentialsId: 'github-credentials', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                bat """
+                        git config --global user.name "Jenkins"
+                        git config --global user.email "jenkins@example.com"
+                        
+                        rm -rf ${SITE_DIR}
+                        git clone -b ${BRANCH} ${REPO} ${SITE_DIR}
+                        
+                        xcopy /E /I /Y "target\\allure-report\\*" "${SITE_DIR}\\${ALLURE_DIR}\\${BUILD_NUMBER}\\"
+                        
+                        cd ${SITE_DIR}
+                        git add .
+                        git commit -m "Add Allure report for build ${BUILD_NUMBER}"
+                        git push https://${GIT_USERNAME}:${GIT_TOKEN}@github.com/tu-usuario/tu-repositorio.git ${BRANCH}
+                    """
+                }
             }
         }
     }
