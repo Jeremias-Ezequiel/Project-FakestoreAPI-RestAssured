@@ -40,7 +40,7 @@ pipeline{
                         cd ${SITE_DIR}
                         git add .
                         git commit -m "Add Allure report for build ${BUILD_NUMBER}"
-                        git push https://${GIT_USERNAME}:${GIT_TOKEN}@github.com/Jeremias-Ezequiel/Project-FakestoreAPI-RestAssured.git ${BRANCH}
+                        git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/Jeremias-Ezequiel/Project-FakestoreAPI-RestAssured.git ${BRANCH}
                     """
                 }
             }
