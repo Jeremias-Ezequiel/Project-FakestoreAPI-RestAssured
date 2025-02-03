@@ -28,7 +28,7 @@ pipeline{
         stage('Deploy to GitHub Pages'){
             steps{
                 withCredentials([usernamePassword(credentialsId: 'github-credentials', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                bat bat '''
+                bat '''
                         rem Configurar Git
                         git config --global user.name "Jenkins"
                         git config --global user.email "jenkins@example.com"
