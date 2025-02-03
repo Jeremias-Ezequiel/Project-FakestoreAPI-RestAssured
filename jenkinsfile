@@ -35,7 +35,10 @@ pipeline{
                         git config --global core.autocrlf true
 
                         rem Limpiar el directorio existente
-                        rmdir /S /Q "$SITE_DIR%" || exit 0
+                        
+                        if exist "%SITE_DIR%"(
+                            rmdir /S /Q "$SITE_DIR%" || exit 0
+                        )
 
                         rem Inicializar un nuevo repositorio local
                         git init
