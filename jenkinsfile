@@ -35,7 +35,7 @@ pipeline{
                         rm -rf ${SITE_DIR}
                         git clone -b ${BRANCH} ${REPO} ${SITE_DIR}
                         
-                        xcopy /E /I /Y "target\\allure-report\\*" "${SITE_DIR}\\${ALLURE_DIR}\\${BUILD_NUMBER}\\"
+                        xcopy /E /I /Y "target/allure-report/*" "${SITE_DIR}/${ALLURE_DIR}/${BUILD_NUMBER}/"
                         
                         cd ${SITE_DIR}
                         git add .
