@@ -1,13 +1,6 @@
 pipeline{
     agent any 
 
-    environment{
-        REPO = 'https://github.com/Jeremias-Ezequiel/Project-FakestoreAPI-RestAssured.git'
-        BRANCH = 'gh-pages'
-        ALLURE_DIR = 'allure-reports'
-        SITE_DIR = 'target/gh-pages'
-    }
-
     stages{
         stage('Build'){
             steps{
@@ -21,49 +14,26 @@ pipeline{
         }
         stage('Generate Allure Report'){
             steps{
-                allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']] 
                 bat 'allure generate target/allure-results -o target/allure-report --clean'
             }
         }
-        stage('Deploy to GitHub Pages'){
-            steps{
-                withCredentials([usernamePassword(credentialsId: 'github-credentials', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                bat '''
-                        rem Configurar Git
-                        git config --global user.name "Jenkins"
-                        git config --global user.email "jenkins@example.com"
-                        git config --global core.autocrlf true
+        stage('Archive Allure Results') {
+            steps {
+                // Archivamos los resultados de Allure
+                archiveArtifacts artifacts: '**/target/allure-results/*', fingerprint: true
+            }
+        }
 
-                        rem Inicializar un nuevo repositorio local
-                        git init
-                        git remote add origin %REPO%
-                        git fetch origin || true
-
-                        rem Crear una rama vacía gh-pages
-                        git checkout --orphan %BRANCH%
-                        git rm -rf . || exit 0
-
-                        rem Crear el directorio destino
-                        mkdir "%SITE_DIR%\\%ALLURE_DIR%"
-
-                        rem Copiar los archivos del reporte
-                        xcopy /E /I /Y "target\\allure-report\\*" "%SITE_DIR%\\%ALLURE_DIR%\\"
-
-                        rem Agregar, confirmar y subir los cambios
-                        cd "%SITE_DIR%"
-                        git add .
-                        git commit -m "Add Allure report for build ${BUILD_NUMBER}" || echo "No changes to commit"
-                        git push https://%GIT_USERNAME%:%GIT_PASSWORD%@github.com/Jeremias-Ezequiel/Project-FakestoreAPI-RestAssured.git %BRANCH% --force
-                    '''
-                }
+        stage('Deploy to GitHub Pages') {
+            steps {
+                // Subimos el reporte generado a GitHub Pages
+                bat 'deploy_allure.bat'
             }
         }
     }
     post{
         always{
-            always{
-                cleanWs()       
-            }
+            cleanWs()       
         }
     }
 }
