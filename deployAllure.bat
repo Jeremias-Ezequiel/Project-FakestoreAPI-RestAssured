@@ -16,7 +16,7 @@ git checkout --orphan %BRANCH%
 
 REM Limpiar contenido anterior y copiar el nuevo reporte
 del /s /q *
-xcopy /E /I /Y ..\target\allure-report\* .
+xcopy /E /I /Y ..\target\allure-report\* "."
 
 REM Subir cambios
 git add .
