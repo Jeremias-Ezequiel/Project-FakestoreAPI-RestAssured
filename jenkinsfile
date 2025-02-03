@@ -36,7 +36,7 @@ pipeline{
 
                         rem Limpiar el directorio existente
                         
-                        if exist "%SITE_DIR%"(
+                        if exist "%SITE_DIR%" (
                             rmdir /S /Q "$SITE_DIR%" || exit 0
                         )
 
