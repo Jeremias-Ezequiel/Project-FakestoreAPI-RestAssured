@@ -49,10 +49,10 @@ pipeline{
                         git checkout -b %BRANCH% || git checkout %BRANCH%
 
                         rem Crear el directorio destino si no existe
-                        mkdir "%SITE_DIR%/%ALLURE_DIR%/%BUILD_NUMBER%"
+                        mkdir "%SITE_DIR%\\%ALLURE_DIR%\\%BUILD_NUMBER%"
 
                         rem Copiar los archivos del reporte
-                        xcopy /E /I /Y "target/allure-report/*" "%SITE_DIR%%ALLURE_DIR%/%BUILD_NUMBER%/"
+                        xcopy /E /I /Y "target\\allure-report\\*" "%SITE_DIR%\\%ALLURE_DIR%\\%BUILD_NUMBER%\\"
 
                         rem Agregar, confirmar y subir los cambios
                         cd "%SITE_DIR%
