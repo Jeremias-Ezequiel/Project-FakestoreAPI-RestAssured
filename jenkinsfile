@@ -28,38 +28,33 @@ pipeline{
         stage('Deploy to GitHub Pages'){
             steps{
                 withCredentials([usernamePassword(credentialsId: 'github-credentials', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                bat """
+                bat bat '''
                         rem Configurar Git
                         git config --global user.name "Jenkins"
                         git config --global user.email "jenkins@example.com"
                         git config --global core.autocrlf true
-
-                        rem Limpiar el directorio existente
-                        
-                        if exist "%SITE_DIR%" (
-                            rmdir /S /Q "$SITE_DIR%" || exit 0
-                        )
 
                         rem Inicializar un nuevo repositorio local
                         git init
                         git remote add origin %REPO%
                         git fetch origin || true
 
-                        rem Crear o cambiar a la rama gh-pages
-                        git checkout -b %BRANCH% || git checkout %BRANCH%
+                        rem Crear una rama vacía gh-pages
+                        git checkout --orphan %BRANCH%
+                        git rm -rf . || exit 0
 
-                        rem Crear el directorio destino si no existe
-                        mkdir "%SITE_DIR%\\%ALLURE_DIR%\\%BUILD_NUMBER%"
+                        rem Crear el directorio destino
+                        mkdir "%SITE_DIR%\\%ALLURE_DIR%"
 
                         rem Copiar los archivos del reporte
-                        xcopy /E /I /Y "target\\allure-report\\*" "%SITE_DIR%\\%ALLURE_DIR%\\%BUILD_NUMBER%\\"
+                        xcopy /E /I /Y "target\\allure-report\\*" "%SITE_DIR%\\%ALLURE_DIR%\\"
 
                         rem Agregar, confirmar y subir los cambios
-                        cd "%SITE_DIR%
+                        cd "%SITE_DIR%"
                         git add .
-                        git commit -m "Add Allure report for build %BUILD_NUMBER%" || echo "No changes to commit"
-                        git push https://%GIT_USERNAME%:%GIT_PASSWORD%@github.com/Jeremias-Ezequiel/Project-FakestoreAPI-RestAssured.git ${BRANCH} --force
-                    """
+                        git commit -m "Add Allure report for build ${BUILD_NUMBER}" || echo "No changes to commit"
+                        git push https://%GIT_USERNAME%:%GIT_PASSWORD%@github.com/Jeremias-Ezequiel/Project-FakestoreAPI-RestAssured.git %BRANCH% --force
+                    '''
                 }
             }
         }
