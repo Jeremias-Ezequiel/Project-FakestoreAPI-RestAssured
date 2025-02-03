@@ -9,11 +9,11 @@ git config --global user.name "AllureReport"
 REM Eliminar el directorio gh-pages si existe
 IF EXIST gh-pages rmdir /s /q gh-pages
 
-REM Clonar el repositorio completo (por defecto, la rama principal)
+REM Clonar el repositorio completo (de la rama por defecto, por ejemplo, main o master)
 git clone %REPO% gh-pages
 cd gh-pages
 
-REM Crear la rama gh-pages como rama órfana (esto crea un área de trabajo "limpia")
+REM Crear la rama gh-pages como rama órfana
 git checkout --orphan %BRANCH%
 
 REM — Eliminar archivos (excluyendo este script) —
@@ -29,9 +29,11 @@ for /F "delims=" %%D in ('dir /ad /b') do (
 REM Copiar el nuevo reporte desde el directorio padre
 xcopy /E /I /Y ..\target\allure-report\* "."
 
-REM Subir los cambios a GitHub (usamos --force para sobrescribir el contenido remoto)
+REM Agregar todos los archivos y crear al menos un commit (vacío si es necesario)
 git add .
-git commit -m "Update allure report"
-git push origin %BRANCH% --force
+git commit -m "Update allure report" --allow-empty
+
+REM Empujar a la rama gh-pages en remoto usando HEAD (para asegurar que se tome la rama actual)
+git push origin HEAD:%BRANCH% --force
 
 cd ..
