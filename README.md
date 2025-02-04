@@ -40,9 +40,11 @@ src/
         └── Schemas              # JSON Schema Definitions
 ```
 
-## Postman Smoke Test
+## Postman Collection
 
-**Collection**: [Fakestore Collection](src/test/resources/postman/FakestoreAPI.postman_collection.json)
+In this collection contains some tests that will be tested with Rest Assured
+
+**Collection**: [Fakestore Collection](https://www.postman.com/jeremias03/workspace/project-fakestoreapi/collection/36953447-d2131652-4f80-450e-ae5c-a908586a9a47?action=share&creator=36953447)
 
 **Validation Scope:**
 
@@ -51,32 +53,6 @@ src/
 ✅ Basic Response Structure Validation
 
 ✅ Average Response time 
-
-**Execution Methods:**
-
-*Via Terminal:* 
-
-1. Instalar Newman globally
-``` bash
-npm install -g newman
-```
-
-2. Run collection with:
-```bash
-newman run src/test/resources/postman/FakestoreAPI.postman_collection.json
-```
-
-*Via Shell Script:*
-
-1. Make script executable
-```bash
-chmod +x smokePostman.sh
-```
-
-2. Execute tests
-```bash
-./smokePostman.sh
-```
 
 ## 🧪 **Test Automation with Rest Assured**  
 
