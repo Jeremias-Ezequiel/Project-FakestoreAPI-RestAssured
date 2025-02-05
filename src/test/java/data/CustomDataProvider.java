@@ -2,9 +2,8 @@ package data;
 
 import org.testng.annotations.DataProvider;
 
-public class ProductsDataProvider {
+public class CustomDataProvider {
     public static final String ERROR_ID_DP = "ErrorIdIndex"; 
-    public static final String INVALID_PAYLOAD_DP = "Invalid Payload";
 
     @DataProvider(name = ERROR_ID_DP)
     public Object[][] errorIdIndex(){
@@ -14,5 +13,4 @@ public class ProductsDataProvider {
             {0,404}
         };
     }
-
 }

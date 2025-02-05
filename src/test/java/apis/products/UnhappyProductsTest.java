@@ -2,7 +2,7 @@ package apis.products;
 
 import org.testng.annotations.Test;
 
-import data.ProductsDataProvider;
+import data.CustomDataProvider;
 import models.product.Product;
 import requests.ProductsRequest;
 import utilities.BaseTest;
@@ -14,8 +14,8 @@ public class UnhappyProductsTest extends BaseTest{
 
     @Test(
         groups = {"regression","smoke"},
-        dataProvider = ProductsDataProvider.ERROR_ID_DP,
-        dataProviderClass = ProductsDataProvider.class
+        dataProvider = CustomDataProvider.ERROR_ID_DP,
+        dataProviderClass = CustomDataProvider.class
     )
     public void getSingleProductTest(int id, int statusCode){
         productsRequest.singleProduct(id);
@@ -26,8 +26,8 @@ public class UnhappyProductsTest extends BaseTest{
 
     @Test(
         groups = {"regression","smoke"},
-        dataProvider = ProductsDataProvider.ERROR_ID_DP,
-        dataProviderClass = ProductsDataProvider.class
+        dataProvider = CustomDataProvider.ERROR_ID_DP,
+        dataProviderClass = CustomDataProvider.class
     )
     public void deleteInvalidProductTest(int id, int statusCode){
         productsRequest.deleteProduct(id);
@@ -37,8 +37,8 @@ public class UnhappyProductsTest extends BaseTest{
 
     @Test(
         groups = {"regression"},
-        dataProvider = ProductsDataProvider.ERROR_ID_DP,
-        dataProviderClass = ProductsDataProvider.class
+        dataProvider = CustomDataProvider.ERROR_ID_DP,
+        dataProviderClass = CustomDataProvider.class
     )
     public void updateInvalidProducTest(int id, int statusCode){
         final Product product = Product.generateProduct(); 

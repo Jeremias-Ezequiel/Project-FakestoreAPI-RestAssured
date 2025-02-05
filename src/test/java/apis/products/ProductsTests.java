@@ -26,7 +26,7 @@ public class ProductsTests extends BaseTest {
     
     @Test(groups = {"regression","smoke"})
     public void getSingleProducTest(){
-        String pathSchema = "src/test/resources/schemas/productSchemas/ProductGetSchema.json";
+        String pathSchema = "src/test/resources/schemas/productSchemas/GETProductSchema.json";
         productsRequest.singleProduct(1);
         final ProductGetResponse response = ResponseManager.getResponseBody(ProductGetResponse.class); 
 
